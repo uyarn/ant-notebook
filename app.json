@@ -1,12 +1,13 @@
 {
   "pages":[
     "pages/index/index",
+    
     "pages/logs/logs"
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarBackgroundColor": "#ffaed9",
+    "navigationBarTitleText": "凯蒂林的记事本。",
     "navigationBarTextStyle":"black"
   }
 }
