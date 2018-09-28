@@ -1,4 +1,4 @@
-// pages/main/habits/habits.js
+// pages/calendar/calendar.js
 Page({
 
   /**

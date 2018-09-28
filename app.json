@@ -1,16 +1,38 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/main/main",
-    "pages/main/calendar/calendar",
-    "pages/main/todoList/todoList",
-    "pages/main/habits/habits",
-    "pages/logs/logs"
+    "pages/calendar/calendar",
+    "pages/todoList/todoList",
+    "pages/habits/habits",
+    "pages/logs/logs" 
   ],
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#ffaed9",
     "navigationBarTitleText": "凯蒂林的记事本。",
     "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "color": "#000",
+    "selectedColor": "#c3c3c3",
+    "backgroundColor": "#ffaed9",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/calendar/calendar",
+        "text":"日历"
+      },
+      {
+        "pagePath": "pages/todoList/todoList",
+        "text":"待办事项"   
+      },
+      {
+        "pagePath": "pages/habits/habits",
+        "text": "习惯"
+      }
+    ]
   }
 }

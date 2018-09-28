@@ -1,4 +1,4 @@
-// pages/main/todoList/todoList.js
+// pages/todoList/todoList.js
 Page({
 
   /**
