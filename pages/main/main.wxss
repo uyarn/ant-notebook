@@ -1,0 +1,20 @@
+/* pages/main/main.wxss */
+.navbar{
+   display: flex;
+   flex-direction: row;
+}
+
+.navbarItem{
+  color: #c3c3c3;
+  flex:1;
+  text-align: center;
+}
+.navbarItem:hover{
+  background: #000;
+}
+.navbarItem text{
+  color:aqua;
+}
+text{
+  color:brown;
+}

@@ -1,7 +1,10 @@
 {
   "pages":[
     "pages/index/index",
-    
+    "pages/main/main",
+    "pages/main/calendar/calendar",
+    "pages/main/todoList/todoList",
+    "pages/main/habits/habits",
     "pages/logs/logs"
   ],
   "window":{

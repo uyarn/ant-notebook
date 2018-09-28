@@ -1,0 +1,7 @@
+<!--pages/main/main.wxml-->
+<view class="navbar">
+<view class="navbarItem"><text>日历</text></view>
+<view class="navbarItem">待办事项</view>
+<view class="navbarItem">习惯养成</view>
+</view>
+

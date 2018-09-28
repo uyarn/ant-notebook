@@ -19,3 +19,6 @@
 .usermotto {
   margin-top: 200px;
 }
+.setup-btn{
+   margin-top: 20px;
+  }

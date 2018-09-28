@@ -4,7 +4,7 @@ const app = getApp()
 
 Page({
   data: {
-    motto: '好记性不如烂笔头',
+    motto: '',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
@@ -12,7 +12,7 @@ Page({
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
-      url: '../logs/logs'
+      url: '../main/main'
     })
   },
   onLoad: function () {
@@ -30,7 +30,8 @@ Page({
           hasUserInfo: true
         })
       }
-    } else {
+    } 
+    else {
       // 在没有 open-type=getUserInfo 版本的兼容处理
       wx.getUserInfo({
         success: res => {
