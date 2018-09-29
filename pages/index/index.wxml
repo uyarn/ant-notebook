@@ -10,7 +10,10 @@
   <view wx:if="{{hasUserInfo}}" class="usermotto">
     <text class="user-motto">{{motto}}</text>
     <view class='record-view'>
-    <input class="record-area" placeholder='完成经济学作业'></input>
+    <input 
+     class="record-area" 
+     placeholder='Fighting!'
+     bindinput ="encourageInput" ></input>
     <button><image src="{{btnImg.src}}" model="{{btnImg.model}}"></image></button>
     </view>
   </view> 

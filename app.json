@@ -9,7 +9,7 @@
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#eb6e80",
-    "navigationBarTitleText": "凯蒂林的记事本。",
+    "navigationBarTitleText": "蚂蚁儿的记事本。",
     "navigationBarTextStyle":"black"
   },
   "tabBar": {

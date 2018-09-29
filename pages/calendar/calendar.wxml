@@ -1,3 +1,10 @@
 <!--pages/calendar/calendar.wxml-->
-
-<calendar />
+<view class="cal">
+        <calendar        
+        cell-size="30"  
+        calendar-style="cal-calendar" 
+        header-style="cal-header" 
+        board-style="cal-board" 
+       
+        />
+    </view>

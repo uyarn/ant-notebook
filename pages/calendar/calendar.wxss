@@ -1,1 +1,20 @@
 /* pages/calendar/calendar.wxss */
+.cal {
+    padding: 15px;
+}
+
+.cal-calendar {
+    background-color: white;
+    padding-top: 10px;
+    border-radius: 15px;
+}
+
+.cal-header {
+    font-size: large;
+    color: #59518d;    
+}
+
+.cal-board {
+    color: #000;
+    font-weight: bold;
+}
