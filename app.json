@@ -8,30 +8,38 @@
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#ffaed9",
+    "navigationBarBackgroundColor": "#eb6e80",
     "navigationBarTitleText": "凯蒂林的记事本。",
     "navigationBarTextStyle":"black"
   },
   "tabBar": {
     "color": "#000",
-    "selectedColor": "#c3c3c3",
-    "backgroundColor": "#ffaed9",
+    "selectedColor": "#008f95",
+    "backgroundColor": "#eb6e80",
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页"
+        "text": "首页",
+        "iconPath": "images/smile.png",
+        "selectedIconPath": "images/smile.png"
       },
       {
         "pagePath": "pages/calendar/calendar",
-        "text":"日历"
+        "text":"日历",
+        "iconPath":"images/calendar.png",
+       "selectedIconPath": "images/calendar.png"
       },
       {
         "pagePath": "pages/todoList/todoList",
-        "text":"待办事项"   
+        "text":"待办事项",
+        "iconPath": "images/todo.png",
+        "selectedIconPath": "images/todo.png"
       },
       {
         "pagePath": "pages/habits/habits",
-        "text": "习惯"
+        "text": "习惯",
+        "iconPath": "images/habits.png",
+        "selectedIconPath": "images/habits.png"
       }
     ]
   }

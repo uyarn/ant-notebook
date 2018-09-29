@@ -1,2 +1,5 @@
 <!--pages/todoList/todoList.wxml-->
-<text>pages/todoList/todoList.wxml</text>
+<view>
+<view class='todo-da'>{{date}}</view>
+<textarea wx:if='{{textarea}}'></textarea>
+</view>

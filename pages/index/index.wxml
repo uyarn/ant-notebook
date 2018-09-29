@@ -7,8 +7,11 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
-  <!-- <view class="usermotto">
+  <view wx:if="{{hasUserInfo}}" class="usermotto">
     <text class="user-motto">{{motto}}</text>
-    <button class="setup-btn" bindtap="bindViewTap">开始记笔记</button>
-  </view> -->
+    <view class='record-view'>
+    <input class="record-area" placeholder='完成经济学作业'></input>
+    <button><image src="{{btnImg.src}}" model="{{btnImg.model}}"></image></button>
+    </view>
+  </view> 
 </view>

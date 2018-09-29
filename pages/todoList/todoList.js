@@ -1,18 +1,22 @@
 // pages/todoList/todoList.js
+const formDate = require('../../utils/util.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+     textArea:false,
+     date:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      date: formDate.formatTime(new Date())
+    }) 
   },
 
   /**
@@ -40,7 +44,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+      
   },
 
   /**
