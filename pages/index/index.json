@@ -1,1 +1,6 @@
-{}
+{
+  "component": true,
+  "usingComponents": {
+    "encourage":"../../components/encourage/encourage"
+  }
+}

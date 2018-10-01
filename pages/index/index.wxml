@@ -1,20 +1,17 @@
 <!--index.wxml-->
 <view class="container">
   <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">    获取头像昵称 
+    </button>
     <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
-  <view wx:if="{{hasUserInfo}}" class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-    <view class='record-view'>
-    <input 
-     class="record-area" 
-     placeholder='Fighting!'
-     bindinput ="encourageInput" ></input>
-    <button><image src="{{btnImg.src}}" model="{{btnImg.model}}"></image></button>
-    </view>
+  <view wx:if="{{hasUserInfo&&!saveEncourage}}" class="usermotto">
+     <encourage motto="{{motto}}"></encourage>
+  </view>
+  <view wx:if="{{saveEncourage}}">
+   <text></text>
   </view> 
 </view>

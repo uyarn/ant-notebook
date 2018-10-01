@@ -1,0 +1,10 @@
+<!--components/encourage/encourage.wxml-->
+<text class="user-motto">{{motto}}</text>
+  
+    <input 
+     class="record-area" 
+     placeholder='Fighting!'
+     bindinput ="encourageInput"></input>
+    <button bindtap='saveEncourage'>
+    <image src="{{btnImg.src}}" model="{{btnImg.model}}"></image>
+    </button>

@@ -9,17 +9,28 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     iconType:'success',
+    saveEncourage:false,
     btnImg:{
       src: '../../images/save.png',
       model:'aspectFit'
     }
   },
-  //事件处理函数
-  bindViewTap: function() {
+  //事件处理函数,保存鼓励的话。
+  saveEncourage: function() {
     let date = wx.getStorageSync('date')||''
-    if(date!=Date.getDate()){}
-    let encourage = wx.getStorageSync('encourage')||''
-
+    let now = new Date();
+    let encourage;
+    console.log(now.getDate())
+    if(now.getDate()==date)
+       encourage = wx.getStorageSync('encourage')||''
+    else
+      encourage = wx.setStorageSync('encourage', this.data.encourage)
+  },
+  // 实时保存input的值
+  bindInput:function(e){
+    this.setData({
+      encourage:e.detail.value
+    })
   },
   onLoad: function () {
     if (app.globalData.userInfo) {
