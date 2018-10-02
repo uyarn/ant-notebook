@@ -9,36 +9,23 @@ Page({
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     iconType:'success',
-    saveEncourage:false,
-    btnImg:{
-      src: '../../images/save.png',
-      model:'aspectFit'
-    }
-  },
-  //事件处理函数,保存鼓励的话。
-  saveEncourage: function() {
-    let date = wx.getStorageSync('date')||''
-    let now = new Date();
-    let encourage;
-    console.log(now.getDate())
-    if(now.getDate()==date)
-       encourage = wx.getStorageSync('encourage')||''
-    else
-      encourage = wx.setStorageSync('encourage', this.data.encourage)
-  },
-  // 实时保存input的值
-  bindInput:function(e){
-    this.setData({
-      encourage:e.detail.value
-    })
   },
   onLoad: function () {
+    let now = new Date();
+    now = now.getDate()
+    let date = wx.getStorageSync('date') || ''
+    if(now!=date){
+      wx.setStorageSync('date', now)
+      wx.setStorageSync('save', false)
+    }
+    this.setData({ save: wx.getStorageSync('save')})
+    this.setData({ encourage: wx.getStorageSync('encourage') })
+       
     if (app.globalData.userInfo) {
       let userInfo = app.globalData.userInfo
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
-       
       })
     } else if (this.data.canIUse){
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
@@ -62,6 +49,17 @@ Page({
         }
       })
     }
+  },
+  onShow: function(){
+    let now = new Date();
+    now = now.getDate()
+    let date = wx.getStorageSync('date') || ''
+    if (now != date) {
+      wx.setStorageSync('date', now)
+      wx.setStorageSync('save', false)
+    }
+    this.setData({ save: wx.getStorageSync('save') })
+    this.setData({ encourage: wx.getStorageSync('encourage') })
   },
   getUserInfo: function(e) {
     console.log(e)

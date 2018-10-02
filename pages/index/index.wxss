@@ -16,29 +16,3 @@
   color: #aaa;
 }
 
-.usermotto {
-  margin-top: 100px;
-  text-align: center;
-}
-.record-view{
-  display:flex;
-  flex-direction: row;
-}
-.record-view button{
-  height: 100rpx;
-  width:100rpx;
- 
-}
-.record-view image{
-  width:100%;
-  height: 60rpx;
-  padding:20rpx 0;
-}
-.record-area{
-   background: rgba(235,110,128,0.8);
-   border:#000 1rpx solid;
-   border-radius: 8rpx;
-   height: 100rpx;
-   line-height: 100rpx;
-   vertical-align: middle;
-}

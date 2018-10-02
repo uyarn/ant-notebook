@@ -1,10 +1,18 @@
 <!--components/encourage/encourage.wxml-->
-<text class="user-motto">{{motto}}</text>
-  
+<view  class="usermotto">
+  <view  wx:if="{{!save}}">
+    <text class="user-motto">{{motto}}</text>
+    <view class="record-view">
     <input 
      class="record-area" 
      placeholder='Fighting!'
-     bindinput ="encourageInput"></input>
-    <button bindtap='saveEncourage'>
+     bindinput ="bindInput"></input>
+  <button bindtap='saveEncourage'>
     <image src="{{btnImg.src}}" model="{{btnImg.model}}"></image>
     </button>
+  </view>
+  </view>
+  <view wx:else>
+  <text class="encourage-motto">{{encourage}}</text>
+  </view>
+</view>

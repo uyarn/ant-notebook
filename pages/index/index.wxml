@@ -8,10 +8,10 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
-  <view wx:if="{{hasUserInfo&&!saveEncourage}}" class="usermotto">
-     <encourage motto="{{motto}}"></encourage>
-  </view>
-  <view wx:if="{{saveEncourage}}">
-   <text></text>
-  </view> 
+ <encourage 
+   wx:if="{{hasUserInfo}}" 
+   motto="{{motto}}"
+   save="{{save}}"
+   encourage="{{encourage}}"
+   ></encourage> 
 </view>
