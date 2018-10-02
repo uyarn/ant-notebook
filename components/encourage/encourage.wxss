@@ -26,3 +26,6 @@
    line-height: 100rpx;
    vertical-align: middle;
 }
+.encourage-motto{
+   font-size: 50rpx;
+}

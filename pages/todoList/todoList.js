@@ -7,12 +7,20 @@ Page({
    */
   data: {
      textArea:false,
-     date:''
+     date:'',
+     addSrc:'../../images/add.png',
+     dialogShow:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
+  addTodo:function(){
+    console.log('test')
+    this.setData({
+      dialogShow:true
+    })
+  },
   onLoad: function (options) {
     this.setData({
       date: formDate.formatTime(new Date())

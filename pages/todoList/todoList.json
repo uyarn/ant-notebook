@@ -1,1 +1,6 @@
-{}
+{
+  "component": true,
+  "usingComponents": {
+    "addialog": "../../components/addialog/addialog"
+  }
+}

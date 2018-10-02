@@ -5,7 +5,8 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-
+    let test =[{ key:1, value:"ttt"}]
+    wx.setStorageSync('todo',test);
     // 登录
     wx.login({
       success: res => {

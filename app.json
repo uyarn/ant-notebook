@@ -31,13 +31,13 @@
       },
       {
         "pagePath": "pages/todoList/todoList",
-        "text":"待办事项",
+        "text":"每日安排",
         "iconPath": "images/todo.png",
         "selectedIconPath": "images/todo.png"
       },
       {
         "pagePath": "pages/habits/habits",
-        "text": "习惯",
+        "text": "习惯养成",
         "iconPath": "images/habits.png",
         "selectedIconPath": "images/habits.png"
       }

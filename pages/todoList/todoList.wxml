@@ -1,5 +1,15 @@
 <!--pages/todoList/todoList.wxml-->
-<view>
-<view class='todo-da'>{{date}}</view>
-<textarea wx:if='{{textarea}}'></textarea>
+<view class='todo'>
+<!--当前日期-->
+<view class='todo-date'>{{date}}</view>
+<view class='todo-lists'>
+<!--提示没有-->
+<view class='todo-remind' wx:if="{{!hasItems}}">你的每日安排空空如也,</view>
+<view class='todo-remind' wx:if="{{!hasItems}}">点击右下角添加每日安排吧.</view>
+</view>
+<addialog dialogShow="{{dialogShow}}" cancelDialog = "cancelDialog"></addialog>
+<!--添加每日安排-->
+<view class='todo-add' bindtap='addTodo'>
+<image src="{{addSrc}}"></image>
+</view>
 </view>
