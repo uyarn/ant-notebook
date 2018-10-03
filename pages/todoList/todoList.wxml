@@ -7,7 +7,7 @@
 <view class='todo-remind' wx:if="{{!hasItems}}">你的每日安排空空如也,</view>
 <view class='todo-remind' wx:if="{{!hasItems}}">点击右下角添加每日安排吧.</view>
 </view>
-<addialog dialogShow="{{dialogShow}}" cancelDialog = "cancelDialog"></addialog>
+<addialog dialogShow="{{dialogShow}}" bind:hiddenDialog="hiddenDialog"></addialog>
 <!--添加每日安排-->
 <view class='todo-add' bindtap='addTodo'>
 <image src="{{addSrc}}"></image>

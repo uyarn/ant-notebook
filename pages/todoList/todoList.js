@@ -1,5 +1,6 @@
 // pages/todoList/todoList.js
 const formDate = require('../../utils/util.js');
+const updateTodo = require('../../utils/updateTodo.js');
 Page({
 
   /**
@@ -16,15 +17,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   addTodo:function(){
-    console.log('test')
     this.setData({
       dialogShow:true
+    })
+  },
+  hiddenDialog:function(e){
+    console.log('testing')
+    this.setData({
+      dialogShow:false
     })
   },
   onLoad: function (options) {
     this.setData({
       date: formDate.formatTime(new Date())
     }) 
+    console.log(updateTodo.updateTodo())
   },
 
   /**
