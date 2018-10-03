@@ -1,10 +1,11 @@
 <!--components/addDialog/addDialog.wxml-->
 <view class="dialog" wx:if='{{dialogShow}}'>
-<view  class='dialog-background'  bindtap='cancleBtn'></view>
+
 <view class='dialog-box'>
 <view class="dialog-title">安排一下。</view>
 <button bindtap='cancleDialog' hidden='{{cancleBtn}}'>取消</button>
 <button bindtap='determineDialog'>确定</button>
 </view>
+<view  class='dialog-background'  bindtap='cancleBtn'></view>
 </view>
 
