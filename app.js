@@ -1,12 +1,14 @@
 //app.js
+const updateLists = require('./utils/updateLists.js')
 App({
   onLaunch: function () {
-    // 展示本地存储能力
-    var logs = wx.getStorageSync('logs') || []
+    // 本地日志。
+    let logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-    let test =[{ key:1, value:"ttt"}]
-    // wx.setStorageSync('todo',test);
+    //  本地存储每日安排
+    updateLists.updateLists();
+
     // 登录
     wx.login({
       success: res => {

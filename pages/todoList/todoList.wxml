@@ -6,6 +6,30 @@
 <!--提示没有-->
 <view class='todo-remind' wx:if="{{!hasItems}}">你的每日安排空空如也,</view>
 <view class='todo-remind' wx:if="{{!hasItems}}">点击右下角添加每日安排吧.</view>
+<!-- 昨日待办 -->
+<view class='todo-yesterday sub-lists' wx:if="{{hasItems&&yesterday.display}}">
+<text>昨天</text>
+{{
+ yesterday.lists.map(d=>
+   <view>d</view>
+)}}
+</view>
+<!-- 今日待办 -->
+<view class='todo-today sub-lists' wx:if="{{hasItems&&today.display}}">
+<text>今天</text>
+{{
+ today.lists.map(d=>
+   <view>d</view>
+)}}
+</view>
+<!-- 明日待办 -->
+<view class='todo-tomorrow sub-lists' wx:if="{{hasItems&&tomorrow.display}}">
+<text>明天</text>
+{{
+ today.lists.map(d=>
+   <view>d</view>
+)}}
+</view>
 </view>
 <addialog dialogShow="{{dialogShow}}" bind:hiddenDialog="hiddenDialog"></addialog>
 <!--添加每日安排-->

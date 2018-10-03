@@ -1,6 +1,5 @@
 // pages/todoList/todoList.js
 const formDate = require('../../utils/util.js');
-const updateTodo = require('../../utils/updateTodo.js');
 Page({
 
   /**
@@ -22,16 +21,30 @@ Page({
     })
   },
   hiddenDialog:function(e){
-    console.log('testing')
     this.setData({
       dialogShow:false
     })
   },
   onLoad: function (options) {
+    let todoLists = wx.getStorageSync('todoLists')
+    console.log(todoLists)
     this.setData({
-      date: formDate.formatTime(new Date())
+      date: formDate.formatTime(new Date()),
+      today:{
+        display: todoLists['today']['lists'].length>=1?true:false,
+        lists: todoLists['today']['lists']
+        },
+      yesterday: {
+        display: todoLists['yesterday']['lists'].length >= 1 ? true : false,
+        lists: todoLists['yesterday']['lists']
+        },
+      tomorrow: {
+        display:todoLists['tomorrow']['lists'].length >= 1 ? true : false,
+        lists: todoLists['tomorrow']['lists']
+      }
+      
     }) 
-    console.log(updateTodo.updateTodo())
+   
   },
 
   /**
