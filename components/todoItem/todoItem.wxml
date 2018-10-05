@@ -1,2 +1,11 @@
 <!--components/todoItem/todoItem.wxml-->
-<text>components/todoItem/todoItem.wxml</text>
+<view class='todo-item'>
+<view class='todo-item-radio'>
+<radio color='#008f95' bindtap='doneTodo' checked="{{status}}"></radio>
+</view>
+<scroll-view scroll-y='true' class="{{status?'todo-item-content todo-item-done':'todo-item-content'}}">{{content}}</scroll-view>
+<view class='todo-item-manipulate' wx:if="{{!status}}">
+<button wx:if="{{types!='tomorrow'}}"class='todo-done' bindtap='todoRemove'><image src='{{doneSrc}}' /></button>
+<button class='todo-delete' bindtap='todoDelete'><image src='{{deleteSrc}}' /></button>
+</view>
+</view>

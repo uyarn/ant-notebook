@@ -37,11 +37,12 @@ Component({
       let date = data.defaultDate?data.defaultDate:data.today
       let todoList = wx.getStorageSync('todoLists');
       if (todoList['today']['date'] == date)
-        todoList['today']['lists'].push(data.dialogDetail)
+        todoList['today']['lists'].push({content: data.dialogDetail, status: false })
       else
-        todoList['tomorrow']['lists'].push(data.dialogDetail)
+        todoList['tomorrow']['lists'].push({content:data.dialogDetail,status:false})
       wx.setStorageSync('todoLists', todoList)
       this.triggerEvent('updateLists', todoList);
+      this.setData({defaultDate:null})
       this.cancelDialog()
     },
     // 输入内容

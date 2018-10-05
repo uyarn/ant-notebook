@@ -2,38 +2,54 @@
 <view class='todo'>
 <!--当前日期-->
 <view class='todo-date'>{{date}}</view>
-<view class='todo-lists'>
+<scroll-view scroll-y='true' class='todo-lists'>
 <!--提示没有-->
 <view
  class='todo-remind' 
  wx:if="{{!display}}">
-你的每日安排空空如也,
+你的每日安排空空如也,点击右下角添加每日安排吧
 </view>
-<view class='todo-remind' 
-  wx:if="{{!display}}">
-点击右下角添加每日安排吧
-</view>
-<!-- 昨日待办 -->
-<view class='todo-yesterday sub-lists' wx:if="{{display}}">
-<text>昨天</text>
 
+<!-- 昨日待办 -->
+<view class='todo-yesterday sub-lists' wx:if="{{display&&todoLists.yesterday.lists.length>0}}">
+<text>昨天</text>
+<view class='todo-list'>
+   <view wx:for="{{todoLists.yesterday.lists}}" wx:key="index" wx:for-item="item">
+            <todoItem 
+             content='{{item.content}}' index ='{{index}}' 
+             status ='{{item.status}}' types='yesterday'
+             bind:todoDelete="todoDelete"
+             bind:todoRemove="todoRemove"/>
+    </view>
+</view>
 </view>
 
 <!-- 今日待办 -->
-<view class='todo-today sub-lists' wx:if="{{display}}">
+<view class='todo-today sub-lists' wx:if="{{display&&todoLists.today.lists.length>0}}">
 <text>今天</text>
-<view class='todoList'>
+<view class='todo-list'>
    <view wx:for="{{todoLists.today.lists}}" wx:key="index" wx:for-item="item">
-{{index+1}}、{{item}}
+            <todoItem 
+             content='{{item.content}}' index ='{{index}}' 
+             status ='{{item.status}}' types="today"
+             bind:todoDelete="todoDelete"
+             bind:todoRemove="todoRemove"/>
     </view>
 </view>
 </view>
 <!-- 明日待办 -->
-<view class='todo-tomorrow sub-lists' wx:if="{{display}}">
+<view class='todo-tomorrow sub-lists' wx:if="{{display&&todoLists.tomorrow.lists.length>0}}">
 <text>明天</text>
-
+<view class='todo-list'>
+   <view wx:for="{{todoLists.tomorrow.lists}}" wx:key="index" wx:for-item="item">
+            <todoItem 
+            content='{{item.content}}' index ='{{index}}' 
+            status ='{{item.status}}' types="tomorrow"
+            bind:todoDelete="todoDelete"/>
+    </view>
 </view>
 </view>
+</scroll-view>
 <addialog
    dialogShow="{{dialogShow}}" 
    today="{{today.date}}" tomorrow="{{tomorrow.date}}" 

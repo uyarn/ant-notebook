@@ -9,10 +9,14 @@
   flex-direction: column;
   align-content: center;
   justify-content: center;
+  
+  margin-bottom: 50rpx;
 }
 .todo-remind{
   font-size: 30rpx;
   text-align: center;
+  height:100%;
+  padding:25%;
   color: rgba(0,0,0,0.4);
 }
 .todo-date{
@@ -23,16 +27,21 @@
    text-align: center;
 }
 .todo-add{
-   position: absolute;
+   position: fixed;
    height: 100rpx;
    width:100rpx;
-   right:15rpx;
-   bottom: 15rpx;
+   right:0rpx;
+   bottom: 5rpx;
+   background: #fff;
+   border-radius: 50%;
 }
 .todo-add image{
   width:100%;
   height: 100%;
+ 
 }
-.sub-lists text{
+.sub-lists{
   text-align: center;
+  font-weight: bold;
+  color:#008f95;
 }

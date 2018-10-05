@@ -1,6 +1,7 @@
 {
   "component": true,
   "usingComponents": {
-    "addialog": "../../components/addialog/addialog"
+    "addialog": "../../components/addialog/addialog",
+    "todoItem":"../../components/todoItem/todoItem"
   }
 }

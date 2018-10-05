@@ -5,10 +5,12 @@
 .dialog-title{
   background: rgb(235, 110, 128);
   font-size: 40rpx;
+  font-weight: bold;
   text-align: center;
 }
 .dialog-radio-group{
   padding:20rpx 0rpx;
+  font-weight: bold;
 }
 .dialog-background{
   position: fixed;
@@ -22,7 +24,7 @@
 }
 .dialog-textarea{
   background: rgba(235,110,128,0.5);
-  padding: 15rpx 15rpx;
+  
   border: #fff 1rpx solid;
   border-radius: 8rpx;
   width:100%;

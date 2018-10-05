@@ -30,6 +30,35 @@ Page({
     this.setData({todoLists: e.detail, display:true})
     
   },
+  //删除todoLists
+  todoDelete:function(e){
+   let lists = wx.getStorageSync('todoLists')
+   lists[e.detail.types].lists.splice(e.detail.index,1)
+   let display = false
+   for(var  i in lists){
+     if(lists[i].lists.length>0)
+       {
+         display = true
+         break
+       }
+   }
+   display?'':this.setData({display:false})     
+   this.setData({ todoLists:lists})
+   wx.setStorageSync('todoLists',lists)
+  },
+  //移动todoLists
+  todoRemove: function (e) {
+    let lists = wx.getStorageSync('todoLists')
+    let things = lists[e.detail.types].lists.splice(e.detail.index, 1)
+    if(e.detail.types=='today')
+       lists['tomorrow'].lists.push({content:things[0].content, status:false})
+    else
+      lists['today'].lists.push({ content: things[0].content, status: false })
+    this.setData({ todoLists: lists })
+    wx.setStorageSync('todoLists', lists)
+    console.log(wx.getStorageSync('todoLists'))
+  },
+
   onLoad: function (options) {
     // 获取todoLists列表
     let todoLists = wx.getStorageSync('todoLists')
@@ -51,7 +80,7 @@ Page({
         lists: todoLists['tomorrow']['lists']
       }  
     }) 
-   
+    
   },
 
   /**

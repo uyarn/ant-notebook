@@ -1,1 +1,5 @@
 /* pages/habits/habits.wxss */
+view{
+  font-weight: bold;
+  text-align: center;
+}
