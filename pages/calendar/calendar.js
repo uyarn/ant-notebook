@@ -7,12 +7,21 @@ Page({
   data: {
 
   },
- 
+  next:function(e){
+    console.log(e.detail)
+  },
+  dayClick:function(e){
+
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+      let today = wx.getStorageSync('todoLists').today;
+      let days_count = new Date(this.data.year, this.data.month, 0).getDate();
+      let days_style = new Array(30).fill(
+      { month: 'current', day: '1', color: 'white', background: '#8497ee'})
+    this.setData({ days_style: days_style})
   },
 
   /**

@@ -3,8 +3,10 @@
         <calendar        
         cell-size="30"  
         calendar-style="cal-calendar" 
+        days-color="{{days_style}}"
         header-style="cal-header" 
         board-style="cal-board" 
-       
+        bindnextMonth="next"
+        binddayClick="dayClick"
         />
     </view>

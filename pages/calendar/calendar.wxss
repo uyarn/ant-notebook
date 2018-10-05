@@ -4,14 +4,14 @@
 }
 
 .cal-calendar {
-    background-color: white;
+    background-color:rgba(235,110,128,0.5) ;
     padding-top: 10px;
     border-radius: 15px;
 }
 
 .cal-header {
     font-size: large;
-    color: #59518d;    
+    color: #000;    
 }
 
 .cal-board {
