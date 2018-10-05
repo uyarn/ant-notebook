@@ -4,34 +4,41 @@
 <view class='todo-date'>{{date}}</view>
 <view class='todo-lists'>
 <!--提示没有-->
-<view class='todo-remind' wx:if="{{!hasItems}}">你的每日安排空空如也,</view>
-<view class='todo-remind' wx:if="{{!hasItems}}">点击右下角添加每日安排吧.</view>
-<!-- 昨日待办 -->
-<view class='todo-yesterday sub-lists' wx:if="{{hasItems&&yesterday.display}}">
-<text>昨天</text>
-{{
- yesterday.lists.map(d=>
-   <view>d</view>
-)}}
+<view
+ class='todo-remind' 
+ wx:if="{{!display}}">
+你的每日安排空空如也,
 </view>
+<view class='todo-remind' 
+  wx:if="{{!display}}">
+点击右下角添加每日安排吧
+</view>
+<!-- 昨日待办 -->
+<view class='todo-yesterday sub-lists' wx:if="{{display}}">
+<text>昨天</text>
+
+</view>
+
 <!-- 今日待办 -->
-<view class='todo-today sub-lists' wx:if="{{hasItems&&today.display}}">
+<view class='todo-today sub-lists' wx:if="{{display}}">
 <text>今天</text>
-{{
- today.lists.map(d=>
-   <view>d</view>
-)}}
+<view class='todoList'>
+   <view wx:for="{{todoLists.today.lists}}" wx:key="index" wx:for-item="item">
+{{index+1}}、{{item}}
+    </view>
+</view>
 </view>
 <!-- 明日待办 -->
-<view class='todo-tomorrow sub-lists' wx:if="{{hasItems&&tomorrow.display}}">
+<view class='todo-tomorrow sub-lists' wx:if="{{display}}">
 <text>明天</text>
-{{
- today.lists.map(d=>
-   <view>d</view>
-)}}
+
 </view>
 </view>
-<addialog dialogShow="{{dialogShow}}" bind:hiddenDialog="hiddenDialog"></addialog>
+<addialog
+   dialogShow="{{dialogShow}}" 
+   today="{{today.date}}" tomorrow="{{tomorrow.date}}" 
+   bind:hiddenDialog="hiddenDialog"
+   bind:updateLists ='updateLists'></addialog>
 <!--添加每日安排-->
 <view class='todo-add' bindtap='addTodo'>
 <image src="{{addSrc}}"></image>

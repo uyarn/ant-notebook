@@ -33,3 +33,6 @@
   width:100%;
   height: 100%;
 }
+.sub-lists text{
+  text-align: center;
+}

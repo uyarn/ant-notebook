@@ -6,10 +6,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-     textArea:false,
      date:'',
      addSrc:'../../images/add.png',
-     dialogShow:false
+     dialogShow:false,
+     todoLists:wx.getStorageSync('todoLists')
   },
 
   /**
@@ -25,24 +25,31 @@ Page({
       dialogShow:false
     })
   },
+  //更新当前todolists
+  updateLists:function(e){
+    this.setData({todoLists: e.detail, display:true})
+    
+  },
   onLoad: function (options) {
+    // 获取todoLists列表
     let todoLists = wx.getStorageSync('todoLists')
-    console.log(todoLists)
     this.setData({
       date: formDate.formatTime(new Date()),
+      display: todoLists['yesterday'].lists.length>0 || 
+                 todoLists['today'].lists.length>0 || 
+                 todoLists['tomorrow'].lists.length>0,
       today:{
-        display: todoLists['today']['lists'].length>=1?true:false,
+        date: todoLists['today']['date'],
         lists: todoLists['today']['lists']
         },
       yesterday: {
-        display: todoLists['yesterday']['lists'].length >= 1 ? true : false,
+        date: todoLists['yesterday']['date'],
         lists: todoLists['yesterday']['lists']
         },
       tomorrow: {
-        display:todoLists['tomorrow']['lists'].length >= 1 ? true : false,
+        date: todoLists['tomorrow']['date'],
         lists: todoLists['tomorrow']['lists']
-      }
-      
+      }  
     }) 
    
   },

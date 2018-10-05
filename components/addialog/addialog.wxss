@@ -2,6 +2,14 @@
 .dialog{
   height: 100%;
 }
+.dialog-title{
+  background: rgb(235, 110, 128);
+  font-size: 40rpx;
+  text-align: center;
+}
+.dialog-radio-group{
+  padding:20rpx 0rpx;
+}
 .dialog-background{
   position: fixed;
   width: 100%;
@@ -12,9 +20,17 @@
   z-index: 1000;
   overflow: hidden;
 }
-
+.dialog-textarea{
+  background: rgba(235,110,128,0.5);
+  padding: 15rpx 15rpx;
+  border: #fff 1rpx solid;
+  border-radius: 8rpx;
+  width:100%;
+  box-sizing: border-box;
+  background-clip: content-box;
+}
 .dialog-box{
-   position: fixed;
+  position: fixed;
   z-index: 5000;
   width: 80%;
   max-width: 300px;
@@ -26,4 +42,12 @@
   text-align: center;
   border-radius: 3px;
   overflow: hidden;
+}
+
+.dialog-btn{
+  display: flex;
+  flex-direction: row;
+}
+.dialog-btn button{
+  width: 50%;
 }

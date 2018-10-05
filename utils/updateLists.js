@@ -13,19 +13,22 @@ const updateLists = () =>{
           'lists': [],
           'day': threeDays['yesterday'].day,
           'month': threeDays['yesterday'].month,
-          'year': threeDays['yesterday'].year
+          'year': threeDays['yesterday'].year,
+          'date': threeDays['yesterday'].date
         },
         'today': {
           'lists': [],
           'day': threeDays['today'].day,
           'month': threeDays['today'].month,
-          'year': threeDays['today'].year
+          'year': threeDays['today'].year,
+          'date': threeDays['today'].date
         },
         'tomorrow': {
           'lists': [],
           'day': threeDays['tomorrow'].day,
           'month': threeDays['tomorrow'].month,
-          'year': threeDays['tomorrow'].year
+          'year': threeDays['tomorrow'].year,
+          'date':threeDays['tomorrow'].date
           
         }
       }

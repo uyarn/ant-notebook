@@ -2,10 +2,17 @@
 <view class="dialog" wx:if='{{dialogShow}}'>
 
 <view class='dialog-box'>
-<view class="dialog-title">安排一下。</view>
-<button bindtap='cancleDialog'>取消</button>
+<view class="dialog-title">安排一下</view>
+<radio-group class="dialog-radio-group" bindchange="radioChange">
+    <radio value="{{today}}"  checked="true">{{today}}</radio>
+    <radio value="{{tomorrow}}" >{{tomorrow}}</radio>
+</radio-group>
+<textarea  class='dialog-textarea' placeholder='完成XXX' bindinput='diaDetailChange'></textarea>
+<view class='dialog-btn'>
+<button bindtap='cancelDialog'>取消</button>
 <button bindtap='determineDialog'>确定</button>
 </view>
-<view  class='dialog-background'  bindtap='cancleDialog'></view>
+</view>
+<view  class='dialog-background'  bindtap='cancelDialog'></view>
 </view>
 
