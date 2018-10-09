@@ -5,23 +5,39 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    
   },
+  // 下个月事件
   next:function(e){
-    console.log(e.detail)
+    
   },
+  // 日期点击事件
   dayClick:function(e){
-
+     let day = e.detail.day
+     this.setData({
+       days_style: [{month: 'current', day: day, color: '#fff', background: '#eb6e80'}]
+     })
+    // wx.request({
+    //   url: 'http://www.deliciousfishchen.cn',
+    //   method: 'get',
+    //   header: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   success: function (res) {
+    //     console.log(res)
+    //   }
+    // })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+      // 初始化日历calendar
       let today = wx.getStorageSync('todoLists').today;
       let days_count = new Date(this.data.year, this.data.month, 0).getDate();
-      let days_style = new Array(30).fill(
-      { month: 'current', day: '1', color: 'white', background: '#8497ee'})
-    this.setData({ days_style: days_style})
+      let days_style = 
+          [{ month: 'current', day: today.day, color: '#fff', background: '#eb6e80'}]
+      this.setData({ days_style: days_style})
   },
 
   /**
