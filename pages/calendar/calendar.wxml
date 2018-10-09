@@ -9,4 +9,7 @@
         bindnextMonth="next"
         binddayClick="dayClick"
         />
+    <view class='cal-add' bindtap='addTodo'>
+<image src="{{addSrc}}"></image>
+</view>
     </view>

@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    addSrc: '../../images/add.png'
   },
   // 下个月事件
   next:function(e){

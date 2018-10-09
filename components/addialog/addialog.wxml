@@ -13,6 +13,6 @@
 <button bindtap='determineDialog'>确定</button>
 </view>
 </view>
-<view  class='dialog-background'></view>
+
 </view>
 
