@@ -1,5 +1,6 @@
 <!--pages/calendar/calendar.wxml-->
 <view class="cal">
+      <!-- 日历组件 -->
         <calendar        
         cell-size="30"  
         calendar-style="cal-calendar" 
@@ -7,9 +8,18 @@
         header-style="cal-header" 
         board-style="cal-board" 
         bindnextMonth="next"
+        bindprevMonth ='prev'
+        binddateChange = 'dateChange'
         binddayClick="dayClick"
         />
-    <view class='cal-add' bindtap='addTodo'>
-<image src="{{addSrc}}"></image>
+        <view class="cal-add" bindtap="addTodo">添加备忘事项</view>
+        <!-- 添加窗口组件 -->
+        <addialog
+          dialogShow="{{dialogShow}}" 
+          title="{{date}}"
+          today="{{date}}"
+          placehold="这天要记得做..."
+          user='calendar'
+          bind:hiddenDialog="hiddenDialog"
+          bind:saveCalendar ='saveCalendar' />
 </view>
-    </view>

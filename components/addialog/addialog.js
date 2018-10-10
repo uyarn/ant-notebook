@@ -12,7 +12,20 @@ Component({
     },
     tomorrow:{
       type:String
-    }
+    },
+    title:{
+      type:String
+    },
+    radio:{
+      type:Boolean,
+      default:false
+    },
+    placehold:{
+      type:String
+      },
+      user:{
+        type:String
+      }
   },
 
   /**
@@ -34,15 +47,22 @@ Component({
     // 保存todo事项
     determineDialog:function(){
       let data  =this.data
-      let date = data.defaultDate?data.defaultDate:data.today
-      let todoList = wx.getStorageSync('todoLists');
-      if (todoList['today']['date'] == date)
-        todoList['today']['lists'].push({content: data.dialogDetail, status: false })
-      else
-        todoList['tomorrow']['lists'].push({content:data.dialogDetail,status:false})
-      wx.setStorageSync('todoLists', todoList)
-      this.triggerEvent('updateLists', todoList);
-      this.setData({defaultDate:null})
+      // 在todoList中
+      if(data.user =='todolist'){
+        let date = data.defaultDate ? data.defaultDate : data.today
+        let todoList = wx.getStorageSync('todoLists');
+        if (todoList['today']['date'] == date)
+          todoList['today']['lists'].push({ content: data.dialogDetail, status: false })
+        else
+          todoList['tomorrow']['lists'].push({ content: data.dialogDetail, status: false })
+        wx.setStorageSync('todoLists', todoList)
+        this.triggerEvent('updateLists', todoList);
+        this.setData({ defaultDate: null })
+      }
+      //在日历备忘中
+      else{
+        
+      }
       this.cancelDialog()
     },
     // 输入内容

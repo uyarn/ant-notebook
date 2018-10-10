@@ -1,0 +1,3 @@
+<!--components/calendarItem/calendarItem.wxml-->
+<view class="calendarItem">
+</view>

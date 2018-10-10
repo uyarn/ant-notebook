@@ -1,10 +1,12 @@
 /* pages/calendar/calendar.wxss */
 .cal {
-    padding: 15px;
+    padding: 30rpx;
+    display: flex;
+    flex-direction: column;
 }
 
 .cal-calendar {
-    background-color:rgba(235,110,128,0.5) ;
+    background-color:rgba(235,110,128,0.4) ;
     padding-top: 10px;
     border-radius: 15px;
 }
@@ -20,16 +22,14 @@
 }
 
 .cal-add{
-   position: fixed;
    height: 100rpx;
-   width:100rpx;
-   right:0rpx;
-   bottom: 5rpx;
-   background: #fff;
-   border-radius: 50%;
-}
-.cal-add image{
-  width:100%;
-  height: 100%;
- 
+   margin-top: 20rpx;
+   width:100%; 
+   line-height: 100rpx;
+   font-size: 20rpx;
+   background-color:rgba(235,110,128,0.2) ;
+   border-radius: 4px;
+   border:2px dotted #eb6e80;
+   text-align: center;
+   color:#eb6e80;
 }

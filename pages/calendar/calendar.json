@@ -1,6 +1,8 @@
 {
+   "component": true,
    "usingComponents": {
-    "calendar": "plugin://calendar/calendar"
-
+    "calendar": "plugin://calendar/calendar",
+    "addialog": "../../components/addialog/addialog",
+    "calendarItem": "../../components/calendarItem/calendarItem"
   }
 }

@@ -52,6 +52,10 @@
 </scroll-view>
 <addialog
    dialogShow="{{dialogShow}}" 
+   title="安排一下"
+   radio="true"
+   placehold="今天我安排做.."
+   user='todolist'
    today="{{today.date}}" tomorrow="{{tomorrow.date}}" 
    bind:hiddenDialog="hiddenDialog"
    bind:updateLists ='updateLists'></addialog>
