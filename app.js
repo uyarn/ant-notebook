@@ -4,6 +4,7 @@ App({
   onLaunch: function () {
     // 本地日志。
     let logs = wx.getStorageSync('logs') || []
+    wx.getStorageSync('memo')==""?wx.setStorageSync('memo',{}):''
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
     //  本地存储每日安排

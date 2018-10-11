@@ -61,7 +61,12 @@ Component({
       }
       //在日历备忘中
       else{
-        
+        let memo = wx.getStorageSync('memo')||''
+        if( !memo[data.today])   
+          memo[data.today] = { lists: []}
+        memo[data.today].lists.push({ content: data.dialogDetail })
+        wx.setStorageSync('memo', memo)
+        this.triggerEvent('updateMemo', memo[data.today].lists);
       }
       this.cancelDialog()
     },

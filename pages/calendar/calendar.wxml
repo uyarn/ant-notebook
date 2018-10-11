@@ -12,6 +12,9 @@
         binddateChange = 'dateChange'
         binddayClick="dayClick"
         />
+        <view class='cal-memo' wx:for="{{memoLists}}" wx:key="index" wx-for:item="{{item}}">
+          <calendarItem content="{{item.content}}" index="{{index}}"/>
+        </view>
         <view class="cal-add" bindtap="addTodo">添加备忘事项</view>
         <!-- 添加窗口组件 -->
         <addialog
@@ -20,6 +23,7 @@
           today="{{date}}"
           placehold="这天要记得做..."
           user='calendar'
+          bind:updateMemo = "updateLists"
           bind:hiddenDialog="hiddenDialog"
           bind:saveCalendar ='saveCalendar' />
 </view>

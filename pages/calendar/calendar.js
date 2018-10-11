@@ -13,6 +13,11 @@ Page({
     // 非本月默认为1日,本月为当天。
       this.monthAction(e)
   },
+  updateLists:function(e){
+      this.setData({
+         memoLists: e.detail
+      })
+  },
   // 上个月点击事件
   prev: function(e){
     this.monthAction(e)
@@ -37,9 +42,11 @@ Page({
   // 日期点击事件
   dayClick:function(e){
      let day = e.detail.day, year=e.detail.year,month=e.detail.month
+    let date = year+'-' + month + '-' + day
      this.setData({
        days_style: [{month: 'current', day: day, color: '#fff', background: '#eb6e80'}],
-       date:  year+'-'+month+'-'+day
+       date:  date,
+       memoLists: wx.getStorageSync('memo')[date] ? wx.getStorageSync('memo')[date].lists: []
      })
     // wx.request({
     // })
@@ -60,12 +67,14 @@ Page({
   onLoad: function (options) {
       // 初始化日历calendar
       let today = wx.getStorageSync('todoLists').today;
+      let memo = wx.getStorageSync('memo')[today.date]
       let days_count = new Date(this.data.year, this.data.month, 0).getDate();
       let days_style = 
           [{ month: 'current', day: today.day, color: '#fff', background: '#eb6e80'}]
       this.setData({
          days_style: days_style,
-         date:today.date
+         date:today.date,
+         memoLists: memo?memo.lists: []
          })
   },
 
