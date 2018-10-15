@@ -48,7 +48,6 @@ Component({
     determineDialog:function(){
       let data  =this.data
       // 在todoList中
-      if(data.user =='todolist'){
         let date = data.defaultDate ? data.defaultDate : data.today
         let todoList = wx.getStorageSync('todoLists');
         if (todoList['today']['date'] == date)
@@ -58,16 +57,6 @@ Component({
         wx.setStorageSync('todoLists', todoList)
         this.triggerEvent('updateLists', todoList);
         this.setData({ defaultDate: null })
-      }
-      //在日历备忘中
-      else{
-        let memo = wx.getStorageSync('memo')||''
-        if( !memo[data.today])   
-          memo[data.today] = { lists: []}
-        memo[data.today].lists.push({ content: data.dialogDetail })
-        wx.setStorageSync('memo', memo)
-        this.triggerEvent('updateMemo', memo[data.today].lists);
-      }
       this.cancelDialog()
     },
     // 输入内容

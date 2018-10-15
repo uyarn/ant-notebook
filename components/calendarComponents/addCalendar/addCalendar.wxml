@@ -1,0 +1,28 @@
+<!--components/calendarComponents/addCalendar/addCalendar.wxml-->
+<view class="add-calendar" wx:if='{{addCalendar}}'>
+
+<view class='add-calendar-box'>
+<view class="add-calendar-title">{{title}}</view>
+<!-- 时间选择 -->
+<view class='add-calendar-item add-calendar-time'>
+<text>时间</text>
+<picker mode="time" value="{{time}}" bindchange='bindTimeChange' >{{time}}</picker>
+</view>
+<!-- 标题设置 -->
+<view class='add-calendar-item'>
+<text>标题</text>
+<input auto-focus='true'></input>
+</view>
+<view class='add-calendar-pick'>
+<button bindtap="addWords(0)">写入文字</button>
+<button bindtap='addWords(1)'>插入图片</button>
+</view>
+<textarea  wx:if="{{area}}" class='add-calendar-textarea' 
+  placeholder='{{placehold}}' bindinput='diaDetailChange' ></textarea>
+<view class='add-calendar-btn'>
+<button bindtap='cancelDialog'>取消</button>
+<button bindtap='determineDialog'>确定</button>
+</view>
+</view>
+
+</view>

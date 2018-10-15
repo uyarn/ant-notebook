@@ -3,6 +3,7 @@
    "usingComponents": {
     "calendar": "plugin://calendar/calendar",
     "addialog": "../../components/addialog/addialog",
-    "calendarItem": "../../components/calendarItem/calendarItem"
+    "addCalendar": "../../components/calendarComponents/addCalendar/addCalendar",
+    "calendarItem": "../../components/calendarComponents/calendarItem/calendarItem"
   }
 }

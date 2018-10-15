@@ -6,7 +6,7 @@ Page({
    */
   data: {
     addSrc: '../../images/addCalendar.png',
-    dialogShow:false
+    addCalendar:false
   },
   // 下个月点击事件
   next: function(e){
@@ -53,12 +53,12 @@ Page({
   },
   addTodo: function () {
     this.setData({
-      dialogShow: true
+      addCalendar: true
     })
   },
   hiddenDialog: function (e) {
     this.setData({
-      dialogShow: false
+      addCalendar: false
     })
   },
   /**

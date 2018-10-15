@@ -3,6 +3,7 @@
 
 <view class='dialog-box'>
 <view class="dialog-title">{{title}}</view>
+<!-- 选择今天/明天添加安排 -->
 <radio-group wx:if="{{radio}}" class="dialog-radio-group" bindchange="radioChange" >
     <radio value="{{today}}"  checked="true">{{today}}</radio>
     <radio value="{{tomorrow}}" >{{tomorrow}}</radio>

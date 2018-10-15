@@ -1,0 +1,55 @@
+/* components/calendarComponents/addCalendar/addCalendar.wxss */
+.add-calendar{
+  height: 100%;
+}
+.add-calendar-title{
+  background: rgb(235, 110, 128);
+  font-size: 40rpx;
+  font-weight: bold;
+  text-align: center;
+}
+.add-calendar-item{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+}
+.add-calendar-item text{
+  flex: 0 1 30%;
+ 
+}
+.add-calendar-item picker, .add-calendar-item input{
+  flex: 0 1 70%;
+  background: rgba(235,110,128,1);
+  border: #fff 1rpx solid;
+  border-radius: 8rpx;
+}
+.add-calendar-textarea{
+  background: rgba(235,110,128,0.5);
+  border: #fff 1rpx solid;
+  border-radius: 8rpx;
+  width:100%;
+  box-sizing: border-box;
+  background-clip: content-box;
+}
+.add-calendar-box{
+  position: fixed;
+  width: 80%;
+  max-width: 300px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background-color: #FFFFFF;
+  text-align: center;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.add-calendar-btn{
+  display: flex;
+  flex-direction: row;
+}
+.add-calendar-btn button{
+  width: 50%;
+}

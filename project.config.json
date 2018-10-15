@@ -33,7 +33,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 2,
+			"current": 3,
 			"list": [
 				{
 					"id": -1,
@@ -50,7 +50,14 @@
 				{
 					"id": -1,
 					"name": "TodoList",
-					"pathName": "pages/todoList/todoList"
+					"pathName": "pages/todoList/todoList",
+					"query": ""
+				},
+				{
+					"id": 3,
+					"name": "calendarAdd",
+					"pathName": "pages/calendar/calendar",
+					"query": "addCalendar=true"
 				}
 			]
 		}

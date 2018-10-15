@@ -1,4 +1,5 @@
 <!--components/calendarItem/calendarItem.wxml-->
 <view class="calendar-item">
 <view class='calendar-item-content'>{{content}}</view>
+<view class='calendar-item-look'><image src="{{lookSrc}}"/></view>
 </view>
