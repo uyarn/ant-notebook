@@ -31,9 +31,10 @@ Component({
    */
   methods: {
      doneTodo:function(){
-        this.setData({ status: true})
+        let status = !this.data.status
+        this.setData({ status: status})
         let todoLists = wx.getStorageSync('todoLists');
-        todoLists[this.data.types].lists[this.data.index].status=true;
+        todoLists[this.data.types].lists[this.data.index].status=status;
        wx.setStorageSync('todoLists', todoLists)
      },
      todoRemove:function(){

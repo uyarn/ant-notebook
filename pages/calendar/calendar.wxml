@@ -12,9 +12,11 @@
         binddateChange = 'dateChange'
         binddayClick="dayClick"
         />
+        <scroll-view>
         <view class='cal-memo' wx:for="{{memoLists}}" wx:key="index" wx-for:item="{{item}}">
           <calendarItem content="{{item.content}}" index="{{index}}"/>
         </view>
+        </scroll-view>
         <view class="cal-add" bindtap="addTodo">添加备忘事项</view>
         <!-- 添加窗口组件 -->
         <addialog

@@ -1,4 +1,4 @@
 <!--components/calendarItem/calendarItem.wxml-->
-<view class="calendarItem">
-{{content}}
+<view class="calendar-item">
+<view class='calendar-item-content'>{{content}}</view>
 </view>

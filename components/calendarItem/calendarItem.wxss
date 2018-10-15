@@ -1,1 +1,29 @@
 /* components/calendarItem/calendarItem.wxss */
+.calendar-item{
+  margin: 20rpx 0;
+  height: 100rpx;
+   width:100%; 
+   border-radius: 4rpx;
+   background: rgba(235,110,128,0.2) ;
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+}
+.calendar-item-content{
+  flex: 0 1 90%;
+  height:100%;
+  line-height: 100rpx;
+  text-align: center;
+  color:#eb6e80;
+}
+.calendar-item-delete{
+  flex: 0 1 10%;
+  height:80rpx;
+  margin:10rpx 0;
+  padding: 0;
+  background:transparent;
+  }
+.calendar-item-delete image{
+  width:100%;
+  height: 100%;
+}
