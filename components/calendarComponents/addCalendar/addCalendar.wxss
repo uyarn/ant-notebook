@@ -4,33 +4,70 @@
 }
 .add-calendar-title{
   background: rgb(235, 110, 128);
-  font-size: 40rpx;
-  font-weight: bold;
+  line-height: 80rpx;
   text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.add-calendar-title .add-text{
+  flex:0 1 90%;
+  height: 80rpx;
+}
+.add-calendar-title button{
+  flex:0 1 10%;
+  height: 80rpx;
+  padding: 0 0 0 0;
+  background:rgb(235, 110, 128);
+}
+.add-calendar-title image{
+  height:60rpx;
+  width:60rpx;
+
 }
 .add-calendar-item{
   display: flex;
   flex-direction: row;
   justify-content: center;
   text-align: center;
+  line-height: 60rpx;
 }
 .add-calendar-item text{
   flex: 0 1 30%;
- 
-}
-.add-calendar-item picker, .add-calendar-item input{
-  flex: 0 1 70%;
-  background: rgba(235,110,128,1);
+  background: rgb(235, 110, 128);
   border: #fff 1rpx solid;
   border-radius: 8rpx;
+}
+.add-calendar-item textarea, .add-calendar-item picker{
+  flex: 0 1 70%;
+  height: 60rpx;
+  line-height: 60rpx;
+  background: rgba(235,110,128,0.2);
+  border: #fff 1rpx solid;
+  border-radius: 8rpx;
+  background-clip: content-box;
 }
 .add-calendar-textarea{
-  background: rgba(235,110,128,0.5);
+  background: rgba(235,110,128,0.2);
   border: #fff 1rpx solid;
-  border-radius: 8rpx;
+  border-bottom: 0;
+  border-radius: 8rpx 8rpx 0  0;
   width:100%;
   box-sizing: border-box;
   background-clip: content-box;
+}
+.add-calendar-block{
+  background: rgba(235,110,128,0.2);
+  border: #fff 1rpx solid;
+  border-top: 0;
+  border-radius: 8rpx;
+  display: flex;
+  justify-content:start;
+}
+.add-calendar-block image{
+  width:100rpx;
+  height: 100rpx;
+  z-index: 50;
 }
 .add-calendar-box{
   position: fixed;
@@ -52,4 +89,10 @@
 }
 .add-calendar-btn button{
   width: 50%;
+  height: 80rpx;
+  line-height: 80rpx;
 }
+/* .scale{
+  width:100%!important;
+  height:100vh;
+} */

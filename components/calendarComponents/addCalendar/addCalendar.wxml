@@ -1,6 +1,5 @@
 <!--components/calendarComponents/addCalendar/addCalendar.wxml-->
 <view class="add-calendar" wx:if='{{addCalendar}}'>
-
 <view class='add-calendar-box'>
 <view class="add-calendar-title">{{title}}</view>
 <!-- 时间选择 -->
@@ -11,18 +10,30 @@
 <!-- 标题设置 -->
 <view class='add-calendar-item'>
 <text>标题</text>
-<input auto-focus='true'></input>
+<textarea auto-focus='true' 
+  bindinput='calTitleChange' 
+  placeholder="输入标题" ></textarea>
 </view>
-<view class='add-calendar-pick'>
-<button bindtap="addWords(0)">写入文字</button>
-<button bindtap='addWords(1)'>插入图片</button>
+<!-- 详细内容设置 -->
+<view class="add-calendar-title">
+<text class='add-text'>详细内容</text>
+<button bindtap='useAblum'><image src='{{camSrc}}'></image></button>
 </view>
-<textarea  wx:if="{{area}}" class='add-calendar-textarea' 
-  placeholder='{{placehold}}' bindinput='diaDetailChange' ></textarea>
-<view class='add-calendar-btn'>
+<textarea  
+  bindinput="calContentChange" 
+  class='add-calendar-textarea' 
+  placeholder='{{placehold}}'></textarea>
+  <view class='add-calendar-block'>
+  <image wx:if='{{image!=null}}' 
+    data-src="{{image}}"
+    src="{{image}}" bindtap="toggleScale"></image>
+  </view>
+  <!-- 新建按钮 -->
+<view  class='add-calendar-btn'>
 <button bindtap='cancelDialog'>取消</button>
 <button bindtap='determineDialog'>确定</button>
 </view>
+
 </view>
 
 </view>

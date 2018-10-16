@@ -1,5 +1,6 @@
 <!--components/calendarItem/calendarItem.wxml-->
 <view class="calendar-item">
-<view class='calendar-item-content'>{{content}}</view>
-<view class='calendar-item-look'><image src="{{lookSrc}}"/></view>
+<view class="calendar-item-time">{{time}}</view>
+<view class='calendar-item-content'>{{title}}</view>
+<view class='calendar-item-look' bindtap='viewDetail'><image src="{{lookSrc}}"/></view>
 </view>

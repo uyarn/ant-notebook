@@ -1,4 +1,5 @@
 // components/calendarComponents/addCalendar/addCalendar.js
+const camera = require('../../../utils/useCamera.js');
 Component({
   /**
    * 组件的属性列表
@@ -6,6 +7,9 @@ Component({
   properties: {
     addCalendar: {
       type: Boolean
+    },
+    types:{
+      type:String
     },
     today: {
       type: String
@@ -33,8 +37,10 @@ Component({
    */
   data: {
     defaultDate: null,
+    camSrc:'../../../images/camera.png',
+    image:null,
+    scale: false,
     dialogDetail: '',
-    area:false,
     time:"00:00"
   },
 
@@ -44,24 +50,38 @@ Component({
   methods: {
     cancelDialog: function (e) {
       let that = this;
+      this.setData({
+        time:"00:00",
+        image:null
+      })
       this.triggerEvent('hiddenDialog', true);
     },
-    // 保存todo事项
+    // 保存备忘事项
     determineDialog: function () {
       let data = this.data
       //在日历备忘中
       let memo = wx.getStorageSync('memo') || ''
       if (!memo[data.today])
         memo[data.today] = { lists: [] }
-        memo[data.today].lists.push({ content: data.dialogDetail })
+        memo[data.today].lists.push({ 
+          titles: data.titles , 
+          content: data.content, 
+          image: data.image,
+          time: data.time
+           })
         wx.setStorageSync('memo', memo)
         this.triggerEvent('updateMemo', memo[data.today].lists);
       this.cancelDialog()
     },
     // 输入内容
-    diaDetailChange: function (e) {
+    calTitleChange: function (e) {
       this.setData({
-        dialogDetail: e.detail.value
+        titles: e.detail.value
+      })
+    },
+    calContentChange: function (e){
+      this.setData({
+        content: e.detail.value
       })
     },
    bindTimeChange:function(e){
@@ -69,6 +89,22 @@ Component({
        //给当前time进行赋值
        time: e.detail.value
      })
-   }
+   },
+  //  使用图片
+  useAblum : function(){
+    let _this = this
+    camera.useCamera(this);
+  },
+  toggleScale: function(e){
+    let current = e.target.dataset.src;
+    console.log(current)
+    wx.previewImage({
+      current: current,
+      urls: current
+      }) // 
+    // this.setData({
+    //   scale:!this.data.scale
+    // })
+  }
   }
 })

@@ -9,13 +9,17 @@
    flex-direction: row;
    justify-content: center;
 }
-.calendar-item-content{
-  flex: 0 1 90%;
+
+.calendar-item-content, .calendar-item-time{
+  flex: 0 1 70%;
   height:100%;
   line-height: 100rpx;
   text-align: center;
   color:#eb6e80;
   overflow: hidden;
+}
+.calendar-item-time{
+  flex: 0 1 20%;
 }
 .calendar-item-look{
   flex: 0 1 10%;
