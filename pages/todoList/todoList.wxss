@@ -23,7 +23,7 @@
    padding-top: 15rpx;
    font-size: 40rpx;
    font-weight: bold;
-   color:#008f95;
+   color:#000;
    text-align: center;
 }
 .todo-add{
@@ -43,5 +43,5 @@
 .sub-lists{
   text-align: center;
   font-weight: bold;
-  color:#008f95;
+  color:#000;
 }

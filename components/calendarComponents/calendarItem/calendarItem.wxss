@@ -4,7 +4,7 @@
   height: 100rpx;
    width:100%; 
    border-radius: 4rpx;
-   background: rgba(235,110,128,0.2) ;
+   background: #ffebc3;
    display: flex;
    flex-direction: row;
    justify-content: center;
@@ -15,7 +15,7 @@
   height:100%;
   line-height: 100rpx;
   text-align: center;
-  color:#eb6e80;
+  color:#000;
   overflow: hidden;
 }
 .calendar-item-time{

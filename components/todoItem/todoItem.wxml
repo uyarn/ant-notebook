@@ -1,7 +1,7 @@
 <!--components/todoItem/todoItem.wxml-->
 <view class='todo-item'>
 <view class='todo-item-radio'>
-<radio color='#008f95' bindtap='doneTodo' checked="{{status}}"></radio>
+<radio color='#ffc107' bindtap='doneTodo' checked="{{status}}"></radio>
 </view>
 <scroll-view scroll-y='true' class="{{status?'todo-item-content todo-item-done':'todo-item-content'}}">{{content}}</scroll-view>
 <view class='todo-item-manipulate' wx:if = "{{!status}}">

@@ -6,13 +6,15 @@
 }
 
 .cal-calendar {
-    background-color:rgba(235,110,128,0.4) ;
+    background-color:#fff ;
     padding-top: 10px;
     border-radius: 15px;
+    border: #ffc107 2rpx solid;
 }
 
 .cal-header {
     font-size: large;
+    background: #ffecb3;
     color: #000;    
 }
 
@@ -26,10 +28,9 @@
    margin-top: 20rpx;
    width:100%; 
    line-height: 100rpx;
-   font-size: 20rpx;
-   background-color:rgba(235,110,128,0.2) ;
+   font-size: 30rpx;
    border-radius: 4px;
-   border:2px dotted #eb6e80;
+   border:2px dotted #ffc107;
    text-align: center;
-   color:#eb6e80;
+   color:#000;
 }

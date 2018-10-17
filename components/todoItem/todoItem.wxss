@@ -6,7 +6,7 @@
   flex-direction: row;
   width:90%;
   height: 140rpx;
-  background:rgba(235,110,128,0.5);
+  background: #ffecb3;
   margin:5rpx auto;
 }
 .todo-item-radio{
@@ -38,4 +38,5 @@
 }
 .todo-item-manipulate button{
   height: 70rpx;
+  background:#ffc107;
 }

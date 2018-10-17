@@ -8,20 +8,20 @@
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#eb6e80",
-    "navigationBarTitleText": "蚂蚁儿的记事本。",
+    "navigationBarBackgroundColor": "#ffc107",
+    "navigationBarTitleText": "蚂蚁记事",
     "navigationBarTextStyle":"black"
   },
   "tabBar": {
     "color": "#000",
-    "selectedColor": "#008f95",
-    "backgroundColor": "#eb6e80",
+    "selectedColor": "#ffc107",
+    "backgroundColor": "#ffecb3",
     "list": [
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "images/smile.png",
-        "selectedIconPath": "images/smile.png"
+        "iconPath": "images/index.png",
+        "selectedIconPath": "images/index.png"
       },
       {
         "pagePath": "pages/calendar/calendar",

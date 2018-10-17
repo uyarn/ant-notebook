@@ -2,7 +2,7 @@
 
 .cal-detail{
   position: fixed;
-  width: 80%;
+  width: 90%;
   max-width: 300px;
   top: 50%;
   left: 50%;
@@ -10,10 +10,11 @@
   flex-direction: column;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  background-color: rgb(248, 243, 166);
+  background-color: #ffebc3;
   text-align: center;
   border-radius: 3px;
   overflow: hidden;
+  border:#ffc107 2rpx solid;
 }
 
 .cal-title{
@@ -37,9 +38,11 @@
   
 }
 .cal-detail textarea{
-  width:100%;
+  width:90%;
   text-align: left;
-  padding:15rpx;
+  margin: 0 auto;
+  border-top:#ffc107 2rpx dotted;
+   border-bottom:#ffc107 2rpx dotted;
 }
 .cal-detail .cal-detail-img{
   display: flex;
@@ -57,9 +60,14 @@
 }
 .cal-detail-btn button{
   width:50%;
-  background-color: rgb(248, 243, 166);
+  background-color: #ffebc3;
   height: 80rpx;
   line-height: 80rpx;
   font-size: 30rpx;
   border:0;
 }
+.cal-detail-btn  button::after{
+   border-left: none; 
+   border-right: none; 
+   border-bottom: none; 
+   }

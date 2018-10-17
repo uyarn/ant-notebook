@@ -3,7 +3,7 @@
   height: 100%;
 }
 .add-calendar-title{
-  background: rgb(235, 110, 128);
+  background: #ffc107;
   line-height: 80rpx;
   text-align: center;
   display: flex;
@@ -18,7 +18,7 @@
   flex:0 1 10%;
   height: 80rpx;
   padding: 0 0 0 0;
-  background:rgb(235, 110, 128);
+  background:#ffc107;
 }
 .add-calendar-title image{
   height:60rpx;
@@ -34,7 +34,7 @@
 }
 .add-calendar-item text{
   flex: 0 1 30%;
-  background: rgb(235, 110, 128);
+  background: #ffc107;
   border: #fff 1rpx solid;
   border-radius: 8rpx;
 }
@@ -42,13 +42,13 @@
   flex: 0 1 70%;
   height: 60rpx;
   line-height: 60rpx;
-  background: rgba(235,110,128,0.2);
+  background: #ffecb3;
   border: #fff 1rpx solid;
   border-radius: 8rpx;
   background-clip: content-box;
 }
 .add-calendar-textarea{
-  background: rgba(235,110,128,0.2);
+  background: #ffecb3;
   border: #fff 1rpx solid;
   border-bottom: 0;
   border-radius: 8rpx 8rpx 0  0;
@@ -57,7 +57,7 @@
   background-clip: content-box;
 }
 .add-calendar-block{
-  background: rgba(235,110,128,0.2);
+  background: #ffecb3;
   border: #fff 1rpx solid;
   border-top: 0;
   border-radius: 8rpx;
@@ -71,8 +71,8 @@
 }
 .add-calendar-box{
   position: fixed;
-  width: 80%;
-  max-width: 300px;
+  border:#ffc107 2rpx solid;
+  width: 90%;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
@@ -91,8 +91,8 @@
   width: 50%;
   height: 80rpx;
   line-height: 80rpx;
+  font-size: 30rpx;
 }
-/* .scale{
-  width:100%!important;
-  height:100vh;
-} */
+.add-calendar-btn button::after{
+  border-bottom:none;
+}

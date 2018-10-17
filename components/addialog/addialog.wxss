@@ -3,7 +3,7 @@
   height: 100%;
 }
 .dialog-title{
-  background: rgb(235, 110, 128);
+  background:#ffc107;
   font-size: 40rpx;
   font-weight: bold;
   text-align: center;
@@ -12,19 +12,9 @@
   padding:20rpx 0rpx;
   font-weight: bold;
 }
-.dialog-background{
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
-  top:0;
-  left:0;
-  z-index: 1000;
-  overflow: hidden;
-}
+
 .dialog-textarea{
-  background: rgba(235,110,128,0.5);
-  
+  background: #ffecb3;
   border: #fff 1rpx solid;
   border-radius: 8rpx;
   width:100%;
@@ -52,4 +42,7 @@
 }
 .dialog-btn button{
   width: 50%;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 30rpx;
 }

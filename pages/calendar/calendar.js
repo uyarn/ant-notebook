@@ -46,7 +46,7 @@ Page({
      let day = e.detail.day, year=e.detail.year,month=e.detail.month
      let date = year+'-' + month + '-' + day
      this.setData({
-       days_style: [{month: 'current', day: day, color: '#fff', background: '#eb6e80'}],
+       days_style: [{month: 'current', day: day, color: '#000', background: '#ffecb3'}],
        date:  date,
        memoLists: wx.getStorageSync('memo')[date]?wx.getStorageSync('memo')[date].lists: []
      })
@@ -103,7 +103,7 @@ Page({
       let memo = wx.getStorageSync('memo')[today.date]
       let days_count = new Date(this.data.year, this.data.month, 0).getDate();
       let days_style = 
-          [{ month: 'current', day: today.day, color: '#fff', background: '#eb6e80'}]
+          [{ month: 'current', day: today.day, color: '#000', background: '#ffecb3'}]
       this.setData({
          days_style: days_style,
          date:today.date,
