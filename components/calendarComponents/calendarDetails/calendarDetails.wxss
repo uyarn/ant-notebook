@@ -10,7 +10,7 @@
   flex-direction: column;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  background-color: rgb(248, 240, 128);
+  background-color: rgb(248, 243, 166);
   text-align: center;
   border-radius: 3px;
   overflow: hidden;
@@ -57,7 +57,7 @@
 }
 .cal-detail-btn button{
   width:50%;
-  background-color: rgb(248, 240, 128);
+  background-color: rgb(248, 243, 166);
   height: 80rpx;
   line-height: 80rpx;
   font-size: 30rpx;
