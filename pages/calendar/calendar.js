@@ -6,7 +6,9 @@ Page({
    */
   data: {
     addSrc: '../../images/addCalendar.png',
-    addCalendar:false
+    addCalendar:false,
+    detailShows:false,
+    detailShowIndex: -1
   },
   // 下个月点击事件
   next: function(e){
@@ -42,23 +44,54 @@ Page({
   // 日期点击事件
   dayClick:function(e){
      let day = e.detail.day, year=e.detail.year,month=e.detail.month
-    let date = year+'-' + month + '-' + day
+     let date = year+'-' + month + '-' + day
      this.setData({
        days_style: [{month: 'current', day: day, color: '#fff', background: '#eb6e80'}],
        date:  date,
-       memoLists: wx.getStorageSync('memo')[date] ? wx.getStorageSync('memo')[date].lists: []
+       memoLists: wx.getStorageSync('memo')[date]?wx.getStorageSync('memo')[date].lists: []
      })
-    // wx.request({
-    // })
   },
+  deleteCalItem:function(e){
+    let memoList = this.data.memoLists
+    let idx = e.detail.index
+    memoList.splice(idx,1)
+    this.setData({
+      memoLists: memoList
+    })
+    let memo = wx.getStorageSync('memo')
+    memo[this.data.date].lists = memoList
+    wx.setStorageSync('memo', memo)
+  },
+  saveModify:function(e){
+    console.log(e)
+     let item = e.detail
+     let memoList = this.data.memoLists
+    memoList[item.index] = item.detail
+    this.setData({
+      memoLists: memoList
+    })
+    let memo = wx.getStorageSync('memo')
+    memo[this.data.date].lists[item.index] = item.detail
+    wx.setStorageSync('memo', memo)
+  },
+  //展示添加组件
   addTodo: function () {
     this.setData({
       addCalendar: true
     })
   },
+  //展示详情组件
+  detailShow:function(e){
+    this.setData({
+      detailShows: true,
+      detailShowIndex: e.detail,
+      detailContent:wx.getStorageSync('memo')[this.data.date].lists[e.detail]
+    })
+  },
   hiddenDialog: function (e) {
     this.setData({
-      addCalendar: false
+      addCalendar: false,
+      detailShows: false
     })
   },
   /**

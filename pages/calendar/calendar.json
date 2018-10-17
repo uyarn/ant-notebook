@@ -4,6 +4,7 @@
     "calendar": "plugin://calendar/calendar",
     "addialog": "../../components/addialog/addialog",
     "addCalendar": "../../components/calendarComponents/addCalendar/addCalendar",
-    "calendarItem": "../../components/calendarComponents/calendarItem/calendarItem"
+    "calendarItem": "../../components/calendarComponents/calendarItem/calendarItem",
+    "calendarDetails":"../../components/calendarComponents/calendarDetails/calendarDetails"
   }
 }

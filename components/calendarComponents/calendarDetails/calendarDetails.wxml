@@ -1,0 +1,27 @@
+<!--components/calendarComponents/calendatDetails/calendarDetails.wxml-->
+<view class="cal-detail">
+<view class='cal-modify' bindtap="modifySave">
+<image src="{{modifySrc}}"></image>
+</view>
+<text class="cal-title">{{today}}</text>
+<!-- 时间 -->
+<picker mode="time" disabled="{{input}}"  id='pick'
+  value="{{detail.time}}" bindchange='change'>{{detail.time}}</picker>
+<!-- 标题 -->
+
+<input class="cal-title" value="{{detail.titles}}" 
+  focus="{{!input}}"disabled='{{input}}' 
+   id="input"
+   bindinput="change" />
+
+<!-- 内容 -->
+<textarea disabled='{{input}}' id="content"
+value="{{detail.content}}" bindinput="change"/>
+<view class="cal-detail-img">
+<image src="{{detail.image}}" data-src="{{detail.image}}"bindtap="toggleScale"></image>
+</view>
+<view class="cal-detail-btn">
+<button bindtap="hideDetail">关闭</button>
+<button bindtap="deleteDetail">删除</button>
+</view>
+</view>

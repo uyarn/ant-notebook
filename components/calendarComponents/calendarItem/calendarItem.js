@@ -27,7 +27,9 @@ Component({
    */
   methods: {
     viewDetail:function(e){
-      
+      let that  = this
+      console.log(this.data.index)
+      this.triggerEvent('detailShow',that.data.index);
     }
   }
 })

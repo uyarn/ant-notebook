@@ -95,16 +95,13 @@ Component({
     let _this = this
     camera.useCamera(this);
   },
+  // 放大图片
   toggleScale: function(e){
     let current = e.target.dataset.src;
-    console.log(current)
     wx.previewImage({
       current: current,
-      urls: current
-      }) // 
-    // this.setData({
-    //   scale:!this.data.scale
-    // })
+      urls: [current]
+      }) 
   }
   }
 })
