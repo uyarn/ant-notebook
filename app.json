@@ -9,7 +9,7 @@
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#ffc107",
-    "navigationBarTitleText": "蚂蚁记事",
+    "navigationBarTitleText": "蚂蚁记事本",
     "navigationBarTextStyle":"black"
   },
   "tabBar": {
