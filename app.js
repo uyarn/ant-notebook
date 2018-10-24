@@ -1,5 +1,5 @@
 //app.js
-const updateLists = require('./utils/updateLists.js')
+
 App({
   onLaunch: function () {
     // 本地日志。
@@ -10,8 +10,6 @@ App({
     wx.getStorageSync('memo')==""?wx.setStorageSync('memo',{}):''
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-    //  本地存储每日安排
-    updateLists.updateLists();
     
     // 登录
     wx.login({

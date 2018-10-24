@@ -48,11 +48,11 @@ Component({
     determineDialog:function(){
       let data  =this.data
       // 在todoList中
-        let date = data.defaultDate ? data.defaultDate : data.today
-        let todoList = wx.getStorageSync('todoLists');
-        if (todoList['today']['date'] == date)
+      let date = data.defaultDate ? data.defaultDate : data.today
+      let todoList = wx.getStorageSync('todoLists');
+      if (todoList['today']['date'] == date)
           todoList['today']['lists'].push({ content: data.dialogDetail, status: false })
-        else
+      else
           todoList['tomorrow']['lists'].push({ content: data.dialogDetail, status: false })
         wx.setStorageSync('todoLists', todoList)
         this.triggerEvent('updateLists', todoList);

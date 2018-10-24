@@ -1,8 +1,7 @@
 const threeDay = require('./threeDays.js');
 
-const updateLists = () =>{
-  let threeDays = threeDay.getDays();
-  let todoLists = wx.getStorageSync('todoLists');
+const updateLists = (todoLists) =>{
+  let threeDays = threeDay.getDays()
   let today = threeDays['today'].day || ''
   let oriToday = todoLists['today']  || undefined
   let oriTomorrow = todoLists['tomorrow'] || undefined
@@ -36,8 +35,8 @@ const updateLists = () =>{
          todoLists.yesterday.lists = oriToday.lists
          todoLists.today.lists = oriTomorrow.lists
     }
-    wx.setStorageSync('todoLists',todoLists);
   }
+  return todoLists
 }
 
 module.exports={

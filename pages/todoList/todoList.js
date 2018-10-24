@@ -1,17 +1,15 @@
 // pages/todoList/todoList.js
 const formDate = require('../../utils/util.js');
+const updateLists = require('../../utils/updateLists.js')
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
      date:'',
      addSrc:'../../images/add.png',
-     dialogShow:false,
-     todoLists:wx.getStorageSync('todoLists')
+     dialogShow:false
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -27,8 +25,7 @@ Page({
   },
   //更新当前todolists
   updateLists:function(e){
-    this.setData({todoLists: e.detail, display:true})
-    
+    this.setData({todoLists: e.detail, display:true})  
   },
   //删除todoLists
   todoDelete:function(e){
@@ -56,54 +53,31 @@ Page({
       lists['today'].lists.push({ content: things[0].content, status: false })
     this.setData({ todoLists: lists })
     wx.setStorageSync('todoLists', lists)
-    console.log(wx.getStorageSync('todoLists'))
   },
-
+  // 页面加载时
   onLoad: function (options) {
-    // 获取todoLists列表
+    // 
+    console.log('testing')
     let that = this
-    let todoLists = '';
+    let todoLists={};
     const db = wx.cloud.database();
     db.collection('todo').where({
-      _openid: wx.getStorageSync('openid')
-    }).get({
-      success: function (res) {
-        // 输出 [{ "title": "The Catcher in the Rye", ... }]
-        if(res.data.length)
-          todoLists = res.data.todoLists
-        else
-         todoLists = {
-           'yesterday' : { 'lists':[ ] },
-           'today' : { 'lists':[ ] },
-           'tomorrow' : { 'lists': [ ] }
-         }
-        that.setData({
-          date: formDate.formatTime(new Date()),
-          display: todoLists['yesterday'].lists.length > 0 ||
-            todoLists['today'].lists.length > 0 ||
-            todoLists['tomorrow'].lists.length > 0,
-          today: {
-            date: todoLists['today']['date'],
-            lists: todoLists['today']['lists']
-          },
-          yesterday: {
-            date: todoLists['yesterday']['date'],
-            lists: todoLists['yesterday']['lists']
-          },
-          tomorrow: {
-            date: todoLists['tomorrow']['date'],
-            lists: todoLists['tomorrow']['lists']
-          }
-        })   
-        console.log(todoLists)
-      }
-     
+      _openid: wx.getStorageSync('userId')
+    }).get().then(res =>{
+      if (res.data.length > 0)
+        todoLists = res.data.todoLists
+      todoLists = updateLists.updateLists(todoLists)
+      console.log(todoLists)
     })
-    // = wx.getStorageSync('todoLists')
-   
-   
-  },
 
+    // this.setData({
+    //   todoLists: todoLists,
+    //   date: formDate.formatTime(new Date()),
+    //   display: todoLists['yesterday'].lists.length > 0 ||
+    //     todoLists['today'].lists.length > 0 ||
+    //     todoLists['tomorrow'].lists.length > 0
+    // })   
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
