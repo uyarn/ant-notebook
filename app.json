@@ -19,7 +19,7 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "加油",
+        "text": "加个油",
         "iconPath": "images/index.png",
         "selectedIconPath": "images/index.png"
       },
