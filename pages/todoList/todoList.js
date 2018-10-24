@@ -61,26 +61,47 @@ Page({
 
   onLoad: function (options) {
     // 获取todoLists列表
-    let todoLists = wx.getStorageSync('todoLists')
-    this.setData({
-      date: formDate.formatTime(new Date()),
-      display: todoLists['yesterday'].lists.length>0 || 
-                 todoLists['today'].lists.length>0 || 
-                 todoLists['tomorrow'].lists.length>0,
-      today:{
-        date: todoLists['today']['date'],
-        lists: todoLists['today']['lists']
-        },
-      yesterday: {
-        date: todoLists['yesterday']['date'],
-        lists: todoLists['yesterday']['lists']
-        },
-      tomorrow: {
-        date: todoLists['tomorrow']['date'],
-        lists: todoLists['tomorrow']['lists']
-      }  
-    }) 
-    
+    let that = this
+    let todoLists = '';
+    const db = wx.cloud.database();
+    db.collection('todo').where({
+      _openid: wx.getStorageSync('openid')
+    }).get({
+      success: function (res) {
+        // 输出 [{ "title": "The Catcher in the Rye", ... }]
+        if(res.data.length)
+          todoLists = res.data.todoLists
+        else
+         todoLists = {
+           'yesterday' : { 'lists':[ ] },
+           'today' : { 'lists':[ ] },
+           'tomorrow' : { 'lists': [ ] }
+         }
+        that.setData({
+          date: formDate.formatTime(new Date()),
+          display: todoLists['yesterday'].lists.length > 0 ||
+            todoLists['today'].lists.length > 0 ||
+            todoLists['tomorrow'].lists.length > 0,
+          today: {
+            date: todoLists['today']['date'],
+            lists: todoLists['today']['lists']
+          },
+          yesterday: {
+            date: todoLists['yesterday']['date'],
+            lists: todoLists['yesterday']['lists']
+          },
+          tomorrow: {
+            date: todoLists['tomorrow']['date'],
+            lists: todoLists['tomorrow']['lists']
+          }
+        })   
+        console.log(todoLists)
+      }
+     
+    })
+    // = wx.getStorageSync('todoLists')
+   
+   
   },
 
   /**

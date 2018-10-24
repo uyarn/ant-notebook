@@ -3,17 +3,32 @@ const updateLists = require('./utils/updateLists.js')
 App({
   onLaunch: function () {
     // 本地日志。
+    wx.cloud.init()
+    const APP_ID = 'wxc24cf8f6b0873508'
+    const  APP_SECRET = '5687c425bc974ae74000653ecee30e85'
     let logs = wx.getStorageSync('logs') || []
     wx.getStorageSync('memo')==""?wx.setStorageSync('memo',{}):''
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
     //  本地存储每日安排
     updateLists.updateLists();
-
+    
     // 登录
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        wx.request({
+          url: 'https://api.weixin.qq.com/sns/jscode2session',
+          data: {
+            appid: APP_ID,
+            secret: APP_SECRET,
+            js_code: res.code,
+            grant_type: 'authorization_code'
+          },
+          success: function (res) {
+            wx.setStorageSync('userId', res.data.openid)
+          }
+        })
       }
     })
     // 获取用户信息
@@ -25,7 +40,6 @@ App({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
               this.globalData.userInfo = res.userInfo
-
               // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
               // 所以此处加入 callback 以防止这种情况
               if (this.userInfoReadyCallback) {
