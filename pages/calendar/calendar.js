@@ -1,4 +1,5 @@
 // pages/calendar/calendar.js
+
 Page({
 
   /**
@@ -31,7 +32,7 @@ Page({
   // 日期选择处理事件
   monthAction:function(e){
     let days_style = this.data.days_style
-    let today = wx.getStorageSync('todoLists').today
+    let today = wx.getStorageSync('threeDay').today
     if (e.detail.currentMonth != today.month) {
       days_style[0].day = 1
       this.setData({ days_style: days_style })
@@ -99,7 +100,7 @@ Page({
    */
   onLoad: function (options) {
       // 初始化日历calendar
-      let today = wx.getStorageSync('todoLists').today;
+      let today = wx.getStorageSync('threeDay').today;
       let memo = wx.getStorageSync('memo')[today.date]
       let days_count = new Date(this.data.year, this.data.month, 0).getDate();
       let days_style = 

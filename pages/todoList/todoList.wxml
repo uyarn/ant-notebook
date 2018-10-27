@@ -56,7 +56,8 @@
    radio="true"
    placehold="今天我安排做.."
    user='todolist'
-   today="{{today.date}}" tomorrow="{{tomorrow.date}}" 
+   todoLists ="{{todoLists}}"
+   today="{{todoLists.today.date}}" tomorrow="{{todoLists.tomorrow.date}}" 
    bind:hiddenDialog="hiddenDialog"
    bind:updateLists ='updateLists'></addialog>
 <!--添加每日安排-->
