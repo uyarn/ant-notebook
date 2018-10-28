@@ -38,10 +38,9 @@ Page({
     else
       db.collection('todo').add({
         data: { todoLists: e.detail }
-      }).then(res =>
-        that.setData({ todoLists: e.detail , display:true})
-      )
-
+      }).then(res =>{
+        that.setData({ todoLists: e.detail, display: true , id: res._id})
+      })
   },
   //删除todoLists
   todoDelete:function(e){
@@ -83,7 +82,7 @@ Page({
   },
   // 页面加载时
   onLoad: function (options) {
-    console.log('testing')
+    // console.log('testing')
     let that = this
     let todoLists={ };
     db.collection('todo').where({
