@@ -17,7 +17,6 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        console.log(res)
         wx.request({
           url: 'https://api.weixin.qq.com/sns/jscode2session',
           data: {
@@ -27,7 +26,6 @@ App({
             grant_type: 'authorization_code'
           },
           success: function (res) {
-            console.log(res)
             wx.setStorageSync('userId', res.data.openid)
           }
         })

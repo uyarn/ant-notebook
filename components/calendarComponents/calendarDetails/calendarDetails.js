@@ -31,7 +31,6 @@ Component({
         this.triggerEvent('hiddenDialog', true);
       },
     deleteDetail:function(){
-      console.log(this.data.index)
       this.triggerEvent('deleteCalItem', this.data.index);
       this.hideDetail();
     },

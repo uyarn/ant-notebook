@@ -1,5 +1,7 @@
 // pages/calendars/calendars.js
 const db = wx.cloud.database()
+const query = require('../../utils/database/queryData.js')
+const updateMemo = require('../../utils/database/calendars/updateMemo.js')
 Page({
 
   /**
@@ -16,45 +18,6 @@ Page({
     // 非本月默认为1日,本月为当天。
     this.monthAction(e)
   },
-  updateLists: function (e) {
-    let that = this
-    let memoList = e.detail
-    console.log('testing')
-    let memo = this.data.memo
-    let lists = memo[this.data.date]
-    // let k = Object.keys(memo)
-    if (!memo[this.data.date])
-      memo[this.data.date] = {}
-    memo[this.data.date].lists = memoList
-    if (this.data.id) {
-      console.log('testing')
-      db.collection('memo').doc(this.data.id).update({
-        data: {
-          memoList: memo
-        },
-        sucess: function (res) {
-          that.setData({
-            memoLists: memoList,
-            memo: memo
-          })
-          console.log('upload memo success!')
-        }
-      })
-    }
-    else {
-      db.collection('memo').add({
-        data: {
-          memoList: this.data.memo
-        },
-        success: function (res) {
-          that.setData({ 
-            id: res._id,
-            memoLists: memoList,
-            memo: memo})
-        }
-      })
-    }
-  },
   // 上个月点击事件
   prev: function (e) {
     this.monthAction(e)
@@ -62,6 +25,16 @@ Page({
   // 日期Picker事件
   dateChange: function (e) {
     this.monthAction(e)
+  },
+  // 日期点击事件
+  dayClick: function (e) {
+    let day = e.detail.day, year = e.detail.year, month = e.detail.month
+    let date = year + '-' + month + '-' + day
+    this.setData({
+      days_style: [{ month: 'current', day: day, color: '#000', background: '#ffecb3' }],
+      date: date,
+      memoLists: this.data.memo[date] ? this.data.memo[date].lists : []
+    })
   },
   // 日期选择处理事件
   monthAction: function (e) {
@@ -80,57 +53,53 @@ Page({
       })
     }
   },
-  // 日期点击事件
-  dayClick: function (e) {
-    let day = e.detail.day, year = e.detail.year, month = e.detail.month
-    let date = year + '-' + month + '-' + day
-    this.setData({
-      days_style: [{ month: 'current', day: day, color: '#000', background: '#ffecb3' }],
-      date: date,
-      memoLists: this.data.memo[date] ? this.data.memo[date].lists : []
-    })
+  // 更新todoLists
+  updateLists: function (e) {
+    let that = this
+    let memoList = e.detail
+    let memo = this.data.memo
+    let lists = memo[this.data.date]
+    // let k = Object.keys(memo)
+    if (!memo[this.data.date])
+      memo[this.data.date] = {}
+    memo[this.data.date].lists = memoList
+    if (this.data.id) {
+      // 存在id 即存在memo更新列表
+      updateMemo.updateMemo(db, this.data.id, memo, memoList, this)
+    }
+    // 不存在id 新增
+    else {
+      db.collection('memo').add({
+        data: {
+          memoList: this.data.memo
+        },
+        success: function (res) {
+          that.setData({ 
+            id: res._id,
+            memoLists: memoList,
+            memo: memo})
+        }
+      })
+    }
   },
   // 删除日历的某个项目
   deleteCalItem: function (e) {
-    let that = this
     let data = this.data
     let memoList = data.memoLists, memo = data.memo
     let idx = e.detail
+    let imgId = memoList[idx].image
     memoList.splice(idx, 1)
     memo[data.date].lists = memoList
-    db.collection('memo').doc(this.data.id).update({
-      data: {
-        memoList: memo
-      },
-      sucess: function (res) {
-        that.setData({
-          memoLists: memoList,
-          memo: memo
-        })
-        console.log('upload memo success!')
-      }
-    })
+    updateMemo.updateMemo(db, this.data.id, memo, memoList, this, true,imgId)
   },
   // 保存修改memo操作
   saveModify: function (e) {
-    let that = this
     let data = this.data
     let item = e.detail
     let memoList = data.memoLists, memo = data.memo
     memoList[item.index] = item.detail
     memo[data.date].lists = memoList
-    db.collection('memo').doc(this.data.id).update({
-      data: {
-        memoList: memo
-      },
-      sucess: function (res) {
-        that.setData({
-          memoLists: memoList,
-          memo: memo
-        })
-        console.log('upload memo success!')
-      }
-    })
+    updateMemo.updateMemo(db, this.data.id, memo, memoList, this)
   },
   //展示添加组件
   addTodo: function () {
@@ -157,23 +126,8 @@ Page({
    */
   onLoad: function (options) {
     // 初始化日历calendar
+
     let today = wx.getStorageSync('threeDay').today;
-    let memo = {}, memoLists = []
-    let that = this
-    // 获取Memo列表数据
-    db.collection('memo').where({
-      _openid: wx.getStorageSync('userId')
-    }).get().then(res => {
-      if (res.data.length > 0) {
-        
-        that.setData({
-          id: res.data[0]._id
-        })
-        memo = res.data[0].memoList
-        memoLists = res.data[0].memoList[today.date] ? res.data[0].memoList[today.date].lists : []
-      }
-      that.setData({ memo: memo, memoLists: memoLists })
-    })
     let days_count = new Date(this.data.year, this.data.month, 0).getDate();
     let days_style = [
       { month: 'current', day: today.day, color: '#000', background: '#ffecb3' }]
@@ -181,6 +135,21 @@ Page({
       days_style: days_style,
       date: today.date
     })
+    // 获取Memo列表数据
+    query.queryData(db,'memo', data =>{
+      // 使用箭头函数保持上下文this指向
+      if (data != null) {
+        this.setData({
+          id: data._id,
+          memo: data.memoList,
+          memoLists: data.memoList[today.date] ? data.memoList[today.date].lists : []
+        })
+      }
+      else {
+        this.setData({ memo: {}, memoLists: [] })
+      }
+    })
+    
   },
 
   /**
@@ -194,7 +163,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+  
   },
 
   /**
@@ -217,14 +186,12 @@ Page({
   onPullDownRefresh: function () {
 
   },
-
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
 
   },
-
   /**
    * 用户点击右上角分享
    */

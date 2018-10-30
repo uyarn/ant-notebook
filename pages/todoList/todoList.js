@@ -1,6 +1,7 @@
 // pages/todoList/todoList.js
 const formDate = require('../../utils/util.js');
 const updateLists = require('../../utils/updateLists.js')
+const query = require('../../utils/database/queryData.js')
 const db = wx.cloud.database()
 Page({
   /**
@@ -98,27 +99,21 @@ Page({
   onLoad: function (options) {
     let that = this
     let todoLists={ };
-    db.collection('todo').where({
-      _openid: wx.getStorageSync('userId')
-    }).get().then(res =>{
-      // 如果用户已经存在 则获取其todoLists 并保存记录id
-      if (res.data.length > 0){
-        todoLists = res.data[0].todoLists
-        this.setData({ id: res.data[0]._id})
-      }
+    query.queryData(db, 'todo', data => {
+        if(data!= null){
+          todoLists = data.todoLists
+          this.setData({ id : data._id})
+        }
       // 更新todoLists
       todoLists = updateLists.updateLists(todoLists)
-      that.setData({
-      todoLists: todoLists,
-        opid: wx.getStorageSync('userId'),
-      date: formDate.formatTime(new Date()),
-      display: todoLists['yesterday'].lists.length > 0 ||
-        todoLists['today'].lists.length > 0 ||
-        todoLists['tomorrow'].lists.length > 0
-      })   
+      this.setData({
+        todoLists: todoLists,
+        date: formDate.formatTime(new Date()),
+        display: todoLists['yesterday'].lists.length > 0 ||
+          todoLists['today'].lists.length > 0 ||
+          todoLists['tomorrow'].lists.length > 0
+      })
     })
-
-    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -137,9 +132,7 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-  },
-
+  onHide: function () { },
   /**
    * 生命周期函数--监听页面卸载
    */
