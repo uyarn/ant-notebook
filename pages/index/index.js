@@ -8,7 +8,7 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    iconType:'success',
+    iconType:'success'
   },
   onLoad: function () {
     let now = new Date();

@@ -22,7 +22,8 @@
 <textarea  
   bindinput="calContentChange" 
   class='add-calendar-textarea' 
-  placeholder='{{placehold}}'></textarea>
+  placeholder='{{placehold}}'
+  value='{{test}}'></textarea>
   <view class='add-calendar-block'>
   <image wx:if='{{image!=null}}' 
     data-src="{{image}}"

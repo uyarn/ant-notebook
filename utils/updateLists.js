@@ -1,7 +1,7 @@
 const threeDay = require('./threeDays.js');
 
 const updateLists = (todoLists) =>{
-  let threeDays = threeDay.getDays()
+  let threeDays = wx.getStorageSync('threeDay')
   let today = threeDays['today'].day || ''
   let oriToday = todoLists['today']  || undefined
   let oriTomorrow = todoLists['tomorrow'] || undefined

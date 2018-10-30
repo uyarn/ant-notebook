@@ -26,6 +26,7 @@
           addCalendar="{{addCalendar}}" 
           title="{{date}}"
           today="{{date}}"
+          memoLists = "{{memoLists}}"
           placehold="这天要记得做..."
           bind:updateMemo = "updateLists"
           

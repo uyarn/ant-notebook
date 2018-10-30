@@ -18,6 +18,7 @@
             <todoItem 
              content='{{item.content}}' index ='{{index}}' 
              status ='{{item.status}}' types='yesterday'
+             bind:todoDone = "todoDone"
              bind:todoDelete="todoDelete"
              bind:todoRemove="todoRemove"/>
     </view>
@@ -32,6 +33,7 @@
             <todoItem 
              content='{{item.content}}' index ='{{index}}' 
              status ='{{item.status}}' types="today"
+             bind:todoDone = "todoDone"
              bind:todoDelete="todoDelete"
              bind:todoRemove="todoRemove"/>
     </view>
@@ -45,6 +47,7 @@
             <todoItem 
             content='{{item.content}}' index ='{{index}}' 
             status ='{{item.status}}' types="tomorrow"
+            bind:todoDone = "todoDone"
             bind:todoDelete="todoDelete"/>
     </view>
 </view>
@@ -56,7 +59,8 @@
    radio="true"
    placehold="今天我安排做.."
    user='todolist'
-   today="{{today.date}}" tomorrow="{{tomorrow.date}}" 
+   todoLists ="{{todoLists}}"
+   today="{{todoLists.today.date}}" tomorrow="{{todoLists.tomorrow.date}}" 
    bind:hiddenDialog="hiddenDialog"
    bind:updateLists ='updateLists'></addialog>
 <!--添加每日安排-->

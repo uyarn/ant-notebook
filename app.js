@@ -1,16 +1,18 @@
 //app.js
-
+const threeDays = require('./utils/threeDays.js')
 App({
   onLaunch: function () {
-    // 本地日志。
+    // 初始化数据库
     wx.cloud.init()
     const APP_ID = 'wxc24cf8f6b0873508'
     const  APP_SECRET = '5687c425bc974ae74000653ecee30e85'
+    // 设置三天 today、tomorro、yesterday
+    wx.setStorageSync('threeDay', threeDays.getDays()) 
+    // 本地日志。
     let logs = wx.getStorageSync('logs') || []
-    wx.getStorageSync('memo')==""?wx.setStorageSync('memo',{}):''
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-    
+    // wx.setStorageSync('userId','oEkWP4ipynwh4MK9TYZk11dMOVnY')
     // 登录
     wx.login({
       success: res => {

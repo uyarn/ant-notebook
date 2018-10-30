@@ -29,6 +29,9 @@ Component({
     },
     user: {
       type: String
+    },
+    memoLists:{
+      type:Array
     }
   },
 
@@ -39,6 +42,7 @@ Component({
     defaultDate: null,
     camSrc:'../../../images/camera.png',
     image:null,
+    uploadImg: null,
     scale: false,
     dialogDetail: '',
     time:"00:00"
@@ -60,17 +64,14 @@ Component({
     determineDialog: function () {
       let data = this.data
       //在日历备忘中
-      let memo = wx.getStorageSync('memo') || ''
-      if (!memo[data.today])
-        memo[data.today] = { lists: [] }
-        memo[data.today].lists.push({ 
+      let memo = this.data.memoLists
+      memo.push({ 
           titles: data.titles , 
           content: data.content, 
-          image: data.image,
+          image: data.uploadImg,
           time: data.time
            })
-        wx.setStorageSync('memo', memo)
-        this.triggerEvent('updateMemo', memo[data.today].lists);
+      this.triggerEvent('updateMemo', memo);
       this.cancelDialog()
     },
     // 输入内容
@@ -92,8 +93,9 @@ Component({
    },
   //  使用图片
   useAblum : function(){
+    let openid = wx.getStorageSync('userId')
     let _this = this
-    camera.useCamera(this);
+    camera.useCamera(openid,this);
   },
   // 放大图片
   toggleScale: function(e){
