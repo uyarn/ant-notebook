@@ -3,7 +3,7 @@
 .cal-detail{
   position: fixed;
   width: 90%;
-  max-width: 300px;
+  
   top: 50%;
   left: 50%;
   display: flex;
@@ -49,8 +49,7 @@
   justify-content: start;
 }
 .cal-detail .cal-detail-img image{
-  width:100rpx;
-  height: 100rpx;
+  width:100%;
   z-index: 50;
   margin:0 0 10rpx 10rpx;
 }

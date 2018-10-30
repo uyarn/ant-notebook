@@ -3,7 +3,9 @@
   height: 100%;
 }
 .add-calendar-title{
-  background: #ffc107;
+  background: #fff;
+  border: #ffc107 4rpx solid;
+  border-radius: 30rpx 30rpx 0 0;
   line-height: 80rpx;
   text-align: center;
   display: flex;
@@ -14,11 +16,14 @@
   flex:0 1 90%;
   height: 80rpx;
 }
-.add-calendar-title button{
+.add-calendar-detail{
+  border-radius: 0;
+}
+.add-calendar-detail button{
   flex:0 1 10%;
   height: 80rpx;
   padding: 0 0 0 0;
-  background:#ffc107;
+  background:#fff;
 }
 .add-calendar-title image{
   height:60rpx;
@@ -34,22 +39,22 @@
 }
 .add-calendar-item text{
   flex: 0 1 30%;
-  background: #ffc107;
-  border: #fff 1rpx solid;
+  background: #fff;
+  border: #ffc107 4rpx solid;
   border-radius: 8rpx;
 }
 .add-calendar-item textarea, .add-calendar-item picker{
   flex: 0 1 70%;
   height: 60rpx;
   line-height: 60rpx;
-  background: #ffecb3;
-  border: #fff 1rpx solid;
+  background: #fff;
+  border: #ffc107 4rpx solid;
   border-radius: 8rpx;
   background-clip: content-box;
 }
 .add-calendar-textarea{
-  background: #ffecb3;
-  border: #fff 1rpx solid;
+  background: #fff;
+  border: #ffc107 4rpx solid;
   border-bottom: 0;
   border-radius: 8rpx 8rpx 0  0;
   width:100%;
@@ -57,27 +62,24 @@
   background-clip: content-box;
 }
 .add-calendar-block{
-  background: #ffecb3;
-  border: #fff 1rpx solid;
+  background: #fff;
+  border: #ffc107 1rpx solid;
   border-top: 0;
   border-radius: 8rpx;
   display: flex;
   justify-content:start;
 }
 .add-calendar-block image{
-  width:100rpx;
-  height: 100rpx;
+  width:100%;
   z-index: 50;
 }
 .add-calendar-box{
   position: fixed;
-  border:#ffc107 2rpx solid;
   width: 90%;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  background-color: #FFFFFF;
   text-align: center;
   border-radius: 3px;
   overflow: hidden;
@@ -92,7 +94,9 @@
   height: 80rpx;
   line-height: 80rpx;
   font-size: 30rpx;
+  background: #fff;
+  
 }
 .add-calendar-btn button::after{
-  border-bottom:none;
+  border: #ffc107 4rpx solid;
 }

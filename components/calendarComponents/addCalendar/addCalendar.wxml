@@ -15,8 +15,8 @@
   placeholder="输入标题" ></textarea>
 </view>
 <!-- 详细内容设置 -->
-<view class="add-calendar-title">
-<text class='add-text'>详细内容</text>
+<view class="add-calendar-title add-calendar-detail">
+<text class='add-text'>详情</text>
 <button bindtap='useAblum'><image src='{{camSrc}}'></image></button>
 </view>
 <textarea  
