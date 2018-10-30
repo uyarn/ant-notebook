@@ -8,6 +8,8 @@
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
   </view>
+  <view>{{userid}}</view>
+  <view>{{threeday}}</view>
  <encourage 
    wx:if="{{hasUserInfo}}" 
    motto="{{motto}}"

@@ -1,10 +1,10 @@
 {
-   "component": true,
-   "usingComponents": {
+  "component": true,
+  "usingComponents": {
     "calendar": "plugin://calendar/calendar",
     "addialog": "../../components/addialog/addialog",
     "addCalendar": "../../components/calendarComponents/addCalendar/addCalendar",
     "calendarItem": "../../components/calendarComponents/calendarItem/calendarItem",
-    "calendarDetails":"../../components/calendarComponents/calendarDetails/calendarDetails"
+    "calendarDetails": "../../components/calendarComponents/calendarDetails/calendarDetails"
   }
 }

@@ -2,7 +2,6 @@
 const threeDays = require('./utils/threeDays.js')
 App({
   onLaunch: function () {
-    
     // 初始化数据库
     wx.cloud.init()
     const APP_ID = 'wxc24cf8f6b0873508'
@@ -13,11 +12,12 @@ App({
     let logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-    wx.getStorageSync('memo') == "" ? wx.setStorageSync('memo', {}) : ''
+    // wx.setStorageSync('userId','oEkWP4ipynwh4MK9TYZk11dMOVnY')
     // 登录
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        console.log(res)
         wx.request({
           url: 'https://api.weixin.qq.com/sns/jscode2session',
           data: {
@@ -27,6 +27,7 @@ App({
             grant_type: 'authorization_code'
           },
           success: function (res) {
+            console.log(res)
             wx.setStorageSync('userId', res.data.openid)
           }
         })

@@ -31,6 +31,7 @@ Page({
       db.collection('todo').doc(this.data.id).update({
         data: { todoLists: e.detail },
         success: function (res) {
+          
           that.setData({ todoLists: e.detail, display: true })
         }
       })
@@ -39,6 +40,7 @@ Page({
       db.collection('todo').add({
         data: { todoLists: e.detail }
       }).then(res =>{
+        
         that.setData({ todoLists: e.detail, display: true , id: res._id})
       })
   },
@@ -74,15 +76,26 @@ Page({
     else
       lists['today'].lists.push({ content: things[0].content, status: false })
    // 更新数据库
-   db.collection('todo').doc(this.data.id).update({
-     data:{ todoLists: lists },
-     success: function (res) {
-       that.setData({ todoLists: lists })
-     } })
+    db.collection('todo').doc(this.data.id).update({
+      data: { todoLists: lists },
+      success: function (res) {
+        that.setData({ todoLists: lists })
+      }
+    })
+  },
+  todoDone:function(e){
+    let lists = this.data.todoLists
+    let that = this  
+    lists[e.detail.types].lists[e.detail.index].status = e.detail.status
+    db.collection('todo').doc(this.data.id).update({
+      data: { todoLists: lists },
+      success: function (res) {
+        that.setData({ todoLists: lists })
+      }
+    })
   },
   // 页面加载时
   onLoad: function (options) {
-    // console.log('testing')
     let that = this
     let todoLists={ };
     db.collection('todo').where({
@@ -97,6 +110,7 @@ Page({
       todoLists = updateLists.updateLists(todoLists)
       that.setData({
       todoLists: todoLists,
+        opid: wx.getStorageSync('userId'),
       date: formDate.formatTime(new Date()),
       display: todoLists['yesterday'].lists.length > 0 ||
         todoLists['today'].lists.length > 0 ||
@@ -124,7 +138,6 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
   },
 
   /**
