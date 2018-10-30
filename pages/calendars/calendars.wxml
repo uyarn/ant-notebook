@@ -1,5 +1,7 @@
 <!--pages/calendar/calendar.wxml-->
 <view class="cal">
+      
+      <view wx:if="{{!addCalendar}}">
       <!-- 日历组件 -->
         <calendar        
         cell-size="30"  
@@ -21,6 +23,7 @@
         </view>
         </scroll-view>
         <view class="cal-add" bindtap="addTodo">添加备忘事项</view>
+        </view>
         <!-- 添加窗口组件 -->
         <addCalendar
           addCalendar="{{addCalendar}}" 
