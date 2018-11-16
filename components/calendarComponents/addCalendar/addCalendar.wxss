@@ -63,7 +63,7 @@
 }
 .add-calendar-block{
   background: #fff;
-  border: #ffc107 1rpx solid;
+  border: #ffc107 4rpx solid;
   border-top: 0;
   border-radius: 8rpx;
   display: flex;
@@ -98,5 +98,5 @@
   
 }
 .add-calendar-btn button::after{
-  border: #ffc107 4rpx solid;
+  border: #ffc107 8rpx solid;
 }
