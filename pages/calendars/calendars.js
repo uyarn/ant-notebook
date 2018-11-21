@@ -2,6 +2,7 @@
 const db = wx.cloud.database()
 const query = require('../../utils/database/queryData.js')
 const updateMemo = require('../../utils/database/calendars/updateMemo.js')
+const app = getApp()
 Page({
 
   /**
@@ -126,7 +127,7 @@ Page({
    */
   onLoad: function (options) {
     // 初始化日历calendar
-
+   
     let today = wx.getStorageSync('threeDay').today;
     let days_count = new Date(this.data.year, this.data.month, 0).getDate();
     let days_style = [
@@ -163,7 +164,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    if (!app.globalData.userInfo) {
+      wx.switchTab({
+        url: '../index/index'
+      })
+    }
   },
 
   /**

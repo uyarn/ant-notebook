@@ -1,7 +1,8 @@
 <!--components/calendarComponents/calendatDetails/calendarDetails.wxml-->
 <view class="cal-detail">
 <view class='cal-modify' bindtap="modifySave">
-<image src="{{modifySrc}}"></image>
+<image wx:if="{{modify}}" src="{{modifySrc}}"></image>
+<text class="save-word" wx:else>保存</text>
 </view>
 <text class="cal-title">{{today}}</text>
 <!-- 时间 -->
