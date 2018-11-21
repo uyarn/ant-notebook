@@ -4,7 +4,8 @@ const app = getApp()
 
 Page({
   data: {
-    motto: '每天起床第一句, 先给自己打个气',
+    motto: '每天起床第一句, 先给自己打个气 (๑•̀ㅂ•́)و✧',
+    remind:'谨慎保存噢 一天只能修改一次 ﾍ|･∀･|ﾉ*~●',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
@@ -62,7 +63,7 @@ Page({
     this.setData({ encourage: wx.getStorageSync('encourage') })
   },
   getUserInfo: function(e) {
-    console.log(e)
+    console.log(app.globalData.userInfo)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,

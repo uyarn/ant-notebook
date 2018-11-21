@@ -4,7 +4,12 @@
   flex-direction: column;
   align-items: center;
 }
-
+.introduce{
+  margin-top: 200rpx;
+  width: 320rpx;
+  margin-bottom: 20rpx;
+  font-size: 20rpx;
+}
 .userinfo-avatar {
   width: 128rpx;
   height: 128rpx;

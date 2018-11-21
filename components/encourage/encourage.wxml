@@ -11,6 +11,7 @@
     <image src="{{btnImg.src}}" model="{{btnImg.model}}"></image>
     </button>
   </view>
+  <text class="remind">{{remind}}</text>
   </view>
   <view wx:else>
   <text class="encourage-motto">{{encourage}}</text>

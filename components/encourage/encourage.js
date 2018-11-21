@@ -12,6 +12,9 @@ Component({
       },
       encourage:{
         type:String
+      },
+      remind:{
+        type:String
       }
   },
 

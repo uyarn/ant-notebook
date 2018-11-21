@@ -4,6 +4,15 @@
   margin-top: 50rpx;
   text-align: center;
 }
+.user-motto{
+  font-size: 30rpx;
+}
+.remind {
+  text-align: center;
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  color:#9f9f9f;
+}
 .record-view{
   display:flex;
   flex-direction: row;
