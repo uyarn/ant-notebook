@@ -3,6 +3,7 @@ const formDate = require('../../utils/util.js');
 const updateLists = require('../../utils/updateLists.js')
 const query = require('../../utils/database/queryData.js')
 const db = wx.cloud.database()
+const app = getApp()
 Page({
   /**
    * 页面的初始数据
@@ -126,7 +127,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if (!app.globalData.userInfo) {
+      wx.switchTab({
+        url: '../index/index'
+      })
+    }
   },
 
   /**

@@ -20,7 +20,8 @@ Component({
    */
   data: {
     input:true,
-    modifySrc:'../../../images/modify.png'
+    modifySrc:'../../../images/modify.png',
+    modify:true
   },
 
   /**
@@ -37,7 +38,8 @@ Component({
     // 修改内容
     modifySave:function(){
       this.setData({
-        input: !this.data.input
+        input: !this.data.input,
+        modify:!this.data.modify
       })
       if(this.data.input){ 
         this.triggerEvent('saveModify', 
