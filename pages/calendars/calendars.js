@@ -31,8 +31,10 @@ Page({
   dayClick: function (e) {
     let day = e.detail.day, year = e.detail.year, month = e.detail.month
     let date = year + '-' + month + '-' + day
+    let days_style = this.data.days_style 
+    days_style[days_style.length-1].day  = day 
     this.setData({
-      days_style: [{ month: 'current', day: day, color: '#000', background: '#ffecb3' }],
+      days_style: days_style,
       date: date,
       memoLists: this.data.memo[date] ? this.data.memo[date].lists : []
     })
@@ -41,18 +43,24 @@ Page({
   monthAction: function (e) {
     let days_style = this.data.days_style
     let today = wx.getStorageSync('threeDay').today
-    if (e.detail.currentMonth != today.month) {
-      days_style[0].day = 1
-      this.setData({ days_style: days_style })
-    }
-    else {
-      days_style[0].day = e.detail.currentYear == today.year ? today.day : 1
+    let this_month = `${e.detail.currentYear}-${e.detail.currentMonth}`
+    this.queryMothMemo(this_month,days_style).then(data=>{
+        days_style.splice(0, days_style.length-1)
+        days_style= data.concat(days_style)
+        if (e.detail.currentMonth != today.month) {
+        //非本月本日
+        days_style[days_style.length - 1].day = 1
+        this.setData({ days_style: days_style })
+        return
+      }
+      //本月本日的情况
+      days_style[days_style.length - 1].day = e.detail.currentYear == today.year ? today.day : 1
       this.setData({
         days_style: days_style,
         date: today.date,
         memoLists: this.data.memo[today.date] ? this.data.memo[today.date].lists : []
       })
-    }
+    })
   },
   // 更新todoLists
   updateLists: function (e) {
@@ -122,55 +130,54 @@ Page({
       detailShows: false
     })
   },
+  queryMothMemo: function (today,days_style) {
+    return new Promise((resolve, reject) => {
+      let match = new RegExp(`${today.year}-${today.month}`)
+      query.queryData(db, 'memo', data => {
+        // 使用箭头函数保持上下文this指向
+      let list = data.memoList
+      let date = Object.keys(list)
+       date.map(d => {
+          if (match.test(d))
+            days_style.unshift({
+              month: 'current',
+              day: parseInt(d.slice(d.lastIndexOf('-') + 1)),
+              color: '#000',
+              background: '#ffecb3'
+            })
+        })
+        console.log(days_style)
+        resolve(data)
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     // 初始化日历calendar
-   
     let today = wx.getStorageSync('threeDay').today;
     let days_count = new Date(this.data.year, this.data.month, 0).getDate();
-    let days_style = [
-      { month: 'current', day: today.day, color: '#000', background: '#ffecb3' }]
-    this.setData({
-      date: today.date
-    })
-    // 获取Memo列表数据
-    let match= new RegExp(`${today.year}-${today.month}`)
-    query.queryData(db,'memo', data =>{
-      // 使用箭头函数保持上下文this指向
-      let list = data.memoList 
-      let date = Object.keys(list)
-      date.map(d => {
-        if(match.test(d))
-          days_style.push({ month: 'current', 
-          day: parseInt(d.slice(d.lastIndexOf('-') + 1)), 
-          color: '#000', 
-            background: '#FF668C' 
-          })
-      })
-      if (data != null) {
-        this.setData({
-          id: data._id,
-          memo: data.memoList,
-          memoLists: data.memoList[today.date] ? data.memoList[today.date].lists : [],
-          days_style: days_style,
-        })
-      }
-      else {
-        this.setData({ memo: {}, memoLists: [], days_style: days_style, })
-      }
-    })
-    
+    let days_style = [{
+        month: 'current', 
+        day: today.day, 
+        color: '#000', 
+        background: '#FF668C' }]
+    this.setData({  date: today.date })
+      // 获取Memo列表数据
+    this.queryMothMemo(today,days_style).then( data => {
+     if (data != null) {
+       this.setData({
+         id: data._id,
+         memo: data.memoList,
+         memoLists: data.memoList[today.date] ? data.memoList[today.date].lists : [],
+         days_style: days_style,
+       })
+       return
+     }
+     this.setData({ memo: {}, memoLists: [], days_style: days_style, })
+    })  
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
   /**
    * 生命周期函数--监听页面显示
    */
