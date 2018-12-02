@@ -133,21 +133,32 @@ Page({
     let days_style = [
       { month: 'current', day: today.day, color: '#000', background: '#ffecb3' }]
     this.setData({
-      days_style: days_style,
       date: today.date
     })
     // 获取Memo列表数据
+    let match= new RegExp(`${today.year}-${today.month}`)
     query.queryData(db,'memo', data =>{
       // 使用箭头函数保持上下文this指向
+      let list = data.memoList 
+      let date = Object.keys(list)
+      date.map(d => {
+        if(match.test(d))
+          days_style.push({ month: 'current', 
+          day: parseInt(d.slice(d.lastIndexOf('-') + 1)), 
+          color: '#000', 
+            background: '#FF668C' 
+          })
+      })
       if (data != null) {
         this.setData({
           id: data._id,
           memo: data.memoList,
-          memoLists: data.memoList[today.date] ? data.memoList[today.date].lists : []
+          memoLists: data.memoList[today.date] ? data.memoList[today.date].lists : [],
+          days_style: days_style,
         })
       }
       else {
-        this.setData({ memo: {}, memoLists: [] })
+        this.setData({ memo: {}, memoLists: [], days_style: days_style, })
       }
     })
     
