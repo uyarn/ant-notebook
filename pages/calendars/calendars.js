@@ -27,8 +27,8 @@ Page({
   dayClick: function (e)  {
     let day = e.detail.day, year = e.detail.year, month = e.detail.month
     let date = year + '-' + month + '-' + day
-    let days_style = this.data.days_style 
-    days_style[days_style.length-1].day  = day 
+    let days_style = this.data.days_style
+    days_style[days_style.length-1].day  = day
     this.setData({
       days_style: days_style,
       date: date,
@@ -79,7 +79,7 @@ Page({
           memoList: this.data.memo
         },
         success: function (res) {
-          that.setData({ 
+          that.setData({
             id: res._id,
             memoLists: memoList,
             memo: memo})
@@ -141,7 +141,7 @@ Page({
               color: '#000',
               background: '#ffecb3'
             })
-          } 
+          }
         })
         resolve(data)
       })
@@ -152,9 +152,9 @@ Page({
     let today = wx.getStorageSync('threeDay').today;
     let days_count = new Date(this.data.year, this.data.month, 0).getDate();
     let days_style = [{
-        month: 'current', 
-        day: today.day, 
-        color: '#000', 
+        month: 'current',
+        day: today.day,
+        color: '#000',
         background: '#FF668C' }]
     this.setData({  date: today.date })
       // 获取Memo列表数据
@@ -169,7 +169,7 @@ Page({
        return
      }
      this.setData({ memo: {}, memoLists: [], days_style: days_style, })
-    })  
+    })
   },
   onShow: function () {
     if (!app.globalData.userInfo) {
