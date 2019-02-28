@@ -1,5 +1,5 @@
 # ant_noteBook 蚂蚁记事本_1.0.12
-  * This is the repository of a Mini Program named “蚂蚁记事本”
+  * This is the repository of a Wechat MiniProgram named “蚂蚁记事本”
   * 功能
     1. @ 每日鼓励 每天可填写一次 次日自动清空
        * <img src="./readmeImgs/index.png" width="200px" height="355px"/>
