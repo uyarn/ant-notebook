@@ -1,7 +1,7 @@
-# ant_noteBook 蚂蚁记事本_1.0.12
+# ant_noteBook 蚂蚁记事本
   * This is the repository of a Wechat MiniProgram named “蚂蚁记事本”🐜. Try to use it by searching "蚂蚁记事本" in Wechat.
   
-  * What U can do 🔖
+  * Features
     1. @ 每日鼓励 每天可填写一次 次日自动清空
        * <img src="./readmeImgs/index.png" width="200px" height="355px"/>
     2. @ 日历备忘 可在日期内填写备忘事项 支持文字和单张图片插入
